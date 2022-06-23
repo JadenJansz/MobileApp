@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools = "http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/add_member"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="Add Member" />
+        <item android:id="@+id/delete_member"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="Delete Member" />
+        <item android:id="@+id/payment"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="Do Payment" />
+    </group>
+</menu>

@@ -1,0 +1,98 @@
+{
+  "project_info": {
+    "project_number": "742160508422",
+    "firebase_url": "https://android-project-5438e-default-rtdb.firebaseio.com",
+    "project_id": "android-project-5438e",
+    "storage_bucket": "android-project-5438e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742160508422:android:ea2a492ba4f4c387dcc587",
+        "android_client_info": {
+          "package_name": "com.example.firebaseapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742160508422-o0vb8huq76q4canv2m4kab531sndc0k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfz6ZHAyO3--ugeMFHbKBF--uL87VEX1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742160508422-o0vb8huq76q4canv2m4kab531sndc0k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742160508422:android:ebfdc51419b3f4f0dcc587",
+        "android_client_info": {
+          "package_name": "lk.nibm.mad_cw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742160508422-o0vb8huq76q4canv2m4kab531sndc0k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfz6ZHAyO3--ugeMFHbKBF--uL87VEX1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742160508422-o0vb8huq76q4canv2m4kab531sndc0k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:742160508422:android:33dfc8dcf3426f41dcc587",
+        "android_client_info": {
+          "package_name": "lk.nibm.madcw"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "742160508422-o0vb8huq76q4canv2m4kab531sndc0k3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfz6ZHAyO3--ugeMFHbKBF--uL87VEX1c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "742160508422-o0vb8huq76q4canv2m4kab531sndc0k3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
