@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
@@ -26,11 +27,15 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
     private lateinit var txtFname : EditText
     private lateinit var txtLname : EditText
     private lateinit var txtEmail : EditText
+    private lateinit var txtNIC : EditText
+    private lateinit var txtContact : EditText
+    private lateinit var txtEmergency : EditText
     private var txtPassword : EditText? = null
     private var txtConfirmPassword : EditText? = null
     private lateinit var progressBar : ProgressBar
 
     private lateinit var mAuth : FirebaseAuth
+    private lateinit var database : DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,6 +53,9 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         txtFname = findViewById(R.id.txt_fname)
         txtLname = findViewById(R.id.txt_lname)
         txtEmail = findViewById(R.id.txt_email)
+        txtNIC = findViewById(R.id.txt_nic)
+        txtContact = findViewById(R.id.txt_contact)
+        txtEmergency = findViewById(R.id.txt_emergency_contact)
         txtPassword = findViewById(R.id.txt_password)
         txtConfirmPassword = findViewById(R.id.txt_confpass)
 
@@ -72,6 +80,9 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         var fname : String = txtFname.text.toString()
         var lname : String = txtLname.text.toString()
         var email : String = txtEmail.text.toString()
+        var nic : String = txtNIC.text.toString()
+        var contact : String = txtContact.text.toString()
+        var emergencyContact : String = txtEmergency.text.toString()
         var password : String = txtPassword?.text.toString()
         var conPassword : String = txtConfirmPassword?.text.toString()
 
@@ -80,16 +91,52 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
             txtFname.requestFocus()
             return
         }
+
         if(lname.isEmpty()){
             txtLname.setError("Full Name is required")
             txtLname.requestFocus()
             return
         }
+
+        if(nic.isEmpty()){
+            txtNIC.setError("NIC is required")
+            txtNIC.requestFocus()
+            return
+        }
+        if(nic.length < 12){
+            txtNIC.setError("Invalid NIC")
+            txtNIC.requestFocus()
+            return
+        }
+
+        if(contact.isEmpty()){
+            txtContact.setError("Contact number is required")
+            txtContact.requestFocus()
+            return
+        }
+        if(contact.length < 10){
+            txtContact.setError("Invalid Contact number")
+            txtContact.requestFocus()
+            return
+        }
+
+        if(emergencyContact.isEmpty()){
+            txtEmergency.setError("Contact number is required")
+            txtEmergency.requestFocus()
+            return
+        }
+        if(emergencyContact.length < 10){
+            txtEmergency.setError("Invalid Contact number")
+            txtEmergency.requestFocus()
+            return
+        }
+
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             txtEmail.setError("Full Name is required")
             txtEmail.requestFocus()
             return
         }
+
         if(password.length < 6){
             txtPassword!!.setError("Password should be more than 6 characters")
             txtPassword!!.requestFocus()
@@ -112,31 +159,56 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         }
 
         progressBar.setVisibility(View.VISIBLE)
-        mAuth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    val user = User(fname,lname,email, "Admin")
-                    FirebaseDatabase.getInstance().getReference("Users")
-                        .child(FirebaseAuth.getInstance().currentUser!!.uid)
-                        .setValue(user).addOnCompleteListener(this) {task ->
 
-                            if(task.isSuccessful){
-                                Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show()
-                                progressBar.setVisibility(View.GONE)
-                            }else{
-                                Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()
-                                progressBar.setVisibility(View.GONE)
-                            }
-                        }
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
-
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
-                    progressBar.setVisibility(View.GONE)
+        database = FirebaseDatabase.getInstance().getReference("Users")
+        val user = mapOf<String, String>(
+            "fname" to fname,
+            "lname" to lname,
+            "nic" to nic,
+            "contact" to contact,
+            "emergency" to emergencyContact
+        )
+        database.child(FirebaseAuth.getInstance().currentUser!!.uid).updateChildren(user)
+            .addOnSuccessListener {
+                val pass = mAuth.currentUser
+                pass!!.updatePassword(password).addOnCompleteListener { task ->
+                    if (task.isSuccessful){
+                        progressBar.setVisibility(View.GONE)
+                        Toast.makeText(this, "Successfully Updated", Toast.LENGTH_SHORT).show()
+                    }
                 }
+
             }
+            .addOnFailureListener{
+                progressBar.setVisibility(View.GONE)
+                Toast.makeText(this, "Failed to Update! Try Again", Toast.LENGTH_SHORT).show()
+            }
+
+//        mAuth.createUserWithEmailAndPassword(email, password)
+//            .addOnCompleteListener(this) { task ->
+//                if (task.isSuccessful) {
+//                    val user = User(fname,lname,email,nic, contact, emergencyContact, "MEMBER")
+//                    FirebaseDatabase.getInstance().getReference("Users")
+//                        .child(FirebaseAuth.getInstance().currentUser!!.uid)
+//                        .setValue(user).addOnCompleteListener(this) {task ->
+//
+//                            if(task.isSuccessful){
+//                                Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show()
+//                                progressBar.setVisibility(View.GONE)
+//                            }else{
+//                                Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()
+//                                progressBar.setVisibility(View.GONE)
+//                            }
+//                        }
+//                    // Sign in success, update UI with the signed-in user's information
+//                    Log.d(TAG, "signInWithEmail:success")
+//
+//                } else {
+//                    // If sign in fails, display a message to the user.
+//                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+//                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
+//                    progressBar.setVisibility(View.GONE)
+//                }
+//            }
     }
 }

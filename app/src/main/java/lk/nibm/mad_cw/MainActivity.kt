@@ -3,6 +3,7 @@ package lk.nibm.mad_cw
 import android.content.Intent
 //import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.Window
@@ -88,12 +89,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
         progressBar.setVisibility(View.VISIBLE)
-
+        Log.d("Before", "Listener")
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) {task ->
+                Log.d("Listener", "")
                 if(task.isSuccessful){
                     var user : FirebaseUser? = FirebaseAuth.getInstance().currentUser
-
+                    Log.d("Listener", "")
                     if(user!!.isEmailVerified()){
                         reference = FirebaseDatabase.getInstance().getReference("Users")
                         reference.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnCompleteListener(this) { task ->
@@ -106,7 +108,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     progressBar.setVisibility(View.GONE)
                                 }
                                 else{
-                                    var memberHomePage = Intent(this, MemberHome::class.java)
+                                    var memberHomePage = Intent(this, NewRegistration::class.java)
                                     startActivity(memberHomePage)
                                     progressBar.setVisibility(View.GONE)
                                 }
@@ -121,11 +123,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                         user.sendEmailVerification()
                         Toast.makeText(this, "Check Your Email", Toast.LENGTH_SHORT).show()
+                        progressBar.setVisibility(View.GONE)
                     }
 
                 }
                 else{
+                    Log.d("Listener", "")
                     Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                    progressBar.setVisibility(View.GONE)
                 }
             }
     }

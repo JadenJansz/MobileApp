@@ -34,7 +34,7 @@
     <EditText
         android:id="@+id/txt_contact"
         android:layout_width="286dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="Contact Number"
         android:inputType="textPersonName"
@@ -59,7 +59,7 @@
     <EditText
         android:id="@+id/txt_nic"
         android:layout_width="287dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:hint="NIC"
         android:inputType="textPersonName"

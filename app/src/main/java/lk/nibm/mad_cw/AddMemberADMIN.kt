@@ -62,7 +62,7 @@ class AddMemberADMIN :  Fragment() {
         mAuth.createUserWithEmailAndPassword(email, "1234567")
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val user = User("","",email, "Member")
+                    val user = User("","",email,"","","", "MEMBER")
                     FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().currentUser!!.uid)
                         .setValue(user).addOnCompleteListener {task ->
