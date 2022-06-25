@@ -12,5 +12,8 @@
         <item android:id="@+id/payment"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Do Payment" />
+        <item android:id="@+id/logout"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="Logout" />
     </group>
 </menu>

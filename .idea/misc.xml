@@ -3,17 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/button_bg.xml" value="0.129" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/edittext_bg.xml" value="0.1" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/radius_bg.xml" value="0.1" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/radius_bg2.xml" value="0.1" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_add_member_admin.xml" value="0.1" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_admin_home.xml" value="0.2318840579710145" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_forgot_password.xml" value="0.259963768115942" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_main.xml" value="0.2671875" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_member_home.xml" value="0.2671875" />
-        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_new_registration.xml" value="0.2671875" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_new_registration.xml" value="0.176" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/add_member_admin.xml" value="0.20697463768115942" />
-        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/my_profile_member.xml" value="0.26222826086956524" />
-        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/nav_header.xml" value="0.2" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/my_profile_member.xml" value="0.2" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/nav_header.xml" value="0.4" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/menu/drawer_menu.xml" value="0.4" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/menu/member_drawer_menu.xml" value="0.2671875" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.272" />
       </map>
     </option>
   </component>

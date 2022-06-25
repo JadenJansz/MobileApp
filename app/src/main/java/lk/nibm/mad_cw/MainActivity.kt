@@ -65,8 +65,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun userLogin(){
-        var email : String = txtUsername.text.toString()
-        var password : String = txtPassword.text.toString()
+        var email : String = txtUsername.text.toString().trim()
+        var password : String = txtPassword.text.toString().trim()
 
         if(email.isEmpty()){
             txtUsername.setError("Email is required")
@@ -108,7 +108,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     progressBar.setVisibility(View.GONE)
                                 }
                                 else{
-                                    var memberHomePage = Intent(this, NewRegistration::class.java)
+                                    var memberHomePage = Intent(this, MemberHome::class.java)
                                     startActivity(memberHomePage)
                                     progressBar.setVisibility(View.GONE)
                                 }

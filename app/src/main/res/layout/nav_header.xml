@@ -8,12 +8,14 @@
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round" />
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/nav_bar_image"
+        android:layout_width="64dp"
+        android:layout_height="68dp"
+        android:src="@mipmap/profileicon" />
 
     <TextView
+        android:id="@+id/nav_bar_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="8dp"
@@ -21,6 +23,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 
     <TextView
+        android:id="@+id/nav_bar_email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="example@gmail.com" />
