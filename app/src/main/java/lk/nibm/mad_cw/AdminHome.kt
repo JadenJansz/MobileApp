@@ -97,6 +97,10 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  AddMemberADMIN()).commit()
             }
 
+            R.id.view_member -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ViewMembersADMIN()).commit()
+            }
+
             R.id.logout -> {
                 var builder =  AlertDialog.Builder(this)
                 builder.setTitle("Log Out")

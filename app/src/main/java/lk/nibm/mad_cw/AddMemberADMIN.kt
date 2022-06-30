@@ -43,7 +43,7 @@ class AddMemberADMIN :  Fragment() {
     }
 
     private fun addMember(){
-        var email = memEmail.text.toString()
+        var email = memEmail.text.toString().trim()
 
         if(email.isEmpty()){
             memEmail.setError("Email is required")

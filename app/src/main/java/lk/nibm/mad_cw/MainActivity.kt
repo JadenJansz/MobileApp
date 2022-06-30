@@ -117,9 +117,24 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                     }
                     else{
-                        var newRegistrationPage = Intent(this, NewRegistration::class.java)
-                        startActivity(newRegistrationPage)
-                        progressBar.setVisibility(View.GONE)
+                        reference = FirebaseDatabase.getInstance().getReference("Users")
+                        reference.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnCompleteListener(this) { task ->
+                            if(task.isSuccessful){
+                                var dataSnapshot : DataSnapshot = task.getResult()
+
+                                if(dataSnapshot.child("nic").getValue() == ""){
+                                    var newRegistrationPage = Intent(this, NewRegistration::class.java)
+                                    startActivity(newRegistrationPage)
+                                    progressBar.setVisibility(View.GONE)
+
+                                }
+                                else if(dataSnapshot.child("nic").getValue() != ""){
+                                    Toast.makeText(this, "Please Verify Your Email from your Gmail account", Toast.LENGTH_SHORT).show()
+                                    progressBar.setVisibility(View.GONE)
+                                }
+                            }
+                        }
+
 
                         user.sendEmailVerification()
                         Toast.makeText(this, "Check Your Email", Toast.LENGTH_SHORT).show()

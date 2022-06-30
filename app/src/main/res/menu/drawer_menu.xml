@@ -9,8 +9,14 @@
         <item android:id="@+id/delete_member"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Delete Member" />
+        <item android:id="@+id/view_member"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="View Members" />
         <item android:id="@+id/payment"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Do Payment" />
+        <item android:id="@+id/logout"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="Logout" />
     </group>
 </menu>

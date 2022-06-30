@@ -12,12 +12,10 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
-import com.squareup.picasso.Picasso
 import java.io.File
 
 class MyProfileMember :  Fragment(), View.OnClickListener {
@@ -47,17 +45,17 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         mAuth = FirebaseAuth.getInstance()
 
 
-        avatar = view.findViewById(R.id.avatar_myProfile)
+        avatar = view.findViewById(R.id.avatar_viewMemberADMIN)
         avatar.setOnClickListener(this)
 
-        txtFname = view.findViewById(R.id.txt_fnameMyProfile)
-        txtLname = view.findViewById(R.id.txt_lnameMyProfile)
-        txtNIC = view.findViewById(R.id.txt_nicMyProfile)
-        txtContact = view.findViewById(R.id.txt_contactMyProfile)
-        txtEmergency = view.findViewById(R.id.txt_emergencyMyProfile)
+        txtFname = view.findViewById(R.id.txt_name_viewMemberADMIN)
+        txtLname = view.findViewById(R.id.txt_email_viewMemberADMIN)
+        txtNIC = view.findViewById(R.id.txt_nic_viewMemberADMIN)
+        txtContact = view.findViewById(R.id.txt_contact_viewMemberADMIN)
+        txtEmergency = view.findViewById(R.id.txt_emergency_viewMemberADMIN)
         progressBar = view.findViewById(R.id.progressBar)
 
-        btnMyProfile = view.findViewById(R.id.btn_myProfile)
+        btnMyProfile = view.findViewById(R.id.btn_viewMemberADMIN)
         btnMyProfile.setOnClickListener(this)
 
         storageReference = FirebaseStorage.getInstance().reference.child("Profile Images/"+mAuth.currentUser!!.uid+".jpg")
@@ -88,11 +86,11 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.avatar_myProfile -> {
+            R.id.avatar_viewMemberADMIN -> {
                 saveProfilePic()
             }
 
-            R.id.btn_myProfile -> {
+            R.id.btn_viewMemberADMIN -> {
                 updateMember()
             }
         }
@@ -122,10 +120,10 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         fileRef.putFile(imageUri).addOnCompleteListener {task ->
             if (task.isSuccessful){
                 Toast.makeText(context, "Photo Uploaded", Toast.LENGTH_SHORT).show()
-                var downloadUrl : String = fileRef.downloadUrl.toString()
+                var downloadUrl : String = fileRef.child("Profile Images/"+mAuth.currentUser!!.uid+".jpg").downloadUrl.toString()
 
                 var userRef = FirebaseDatabase.getInstance().reference.child("Users").child(mAuth.currentUser!!.uid)
-                userRef.child("profileImage").setValue(downloadUrl)
+                userRef.child("profileImage").setValue("https://firebasestorage.googleapis.com/v0/b/android-project-5438e.appspot.com/o/Profile%20Images%2F"+mAuth.currentUser!!.uid+".jpg?alt=media") //Had downloadUrl
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
                             Toast.makeText(context, "Photo Uploaded To Database", Toast.LENGTH_SHORT).show()

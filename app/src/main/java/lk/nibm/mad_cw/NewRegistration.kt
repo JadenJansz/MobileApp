@@ -232,6 +232,9 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
                     if (task.isSuccessful){
                         progressBar.setVisibility(View.GONE)
                         Toast.makeText(this, "Successfully Updated", Toast.LENGTH_SHORT).show()
+
+                        val intent = Intent(this, MainActivity::class.java)
+                        startActivity(intent)
                     }
                 }
 
