@@ -106,11 +106,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     var adminPage = Intent(this, AdminHome::class.java)
                                     startActivity(adminPage)
                                     progressBar.setVisibility(View.GONE)
+                                    //this.finish()
                                 }
                                 else{
                                     var memberHomePage = Intent(this, MemberHome::class.java)
                                     startActivity(memberHomePage)
                                     progressBar.setVisibility(View.GONE)
+                                    //this.finish()
                                 }
                             }
                         }
@@ -126,6 +128,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     var newRegistrationPage = Intent(this, NewRegistration::class.java)
                                     startActivity(newRegistrationPage)
                                     progressBar.setVisibility(View.GONE)
+                                    //this.finish()
 
                                 }
                                 else if(dataSnapshot.child("nic").getValue() != ""){

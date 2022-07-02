@@ -104,6 +104,10 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  MyProfileMember()).commit()
             }
 
+            R.id.search_exercises -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  SeacrhExercises()).commit()
+            }
+
             R.id.logout -> {
                 var builder =  AlertDialog.Builder(this)
                 builder.setTitle("Log Out")

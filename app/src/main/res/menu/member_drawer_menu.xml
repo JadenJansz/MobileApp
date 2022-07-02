@@ -9,6 +9,9 @@
         <item android:id="@+id/check_fitness_status"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Check Fitness Status" />
+        <item android:id="@+id/search_exercises"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="Search Exercises" />
         <item android:id="@+id/payment"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Do Payment" />

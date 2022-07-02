@@ -6,7 +6,6 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,7 +25,7 @@ class ViewMembersADMIN : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        memberRecycleView = view.findViewById(R.id.row_members)
+        memberRecycleView = view.findViewById(R.id.row_exercise)
         memberRecycleView.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 
         userArrayList = arrayListOf<UserArray>()
