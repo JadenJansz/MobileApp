@@ -42,6 +42,15 @@ class AddMemberADMIN :  Fragment() {
         }
     }
 
+    private fun sendMail() {
+        var email = "oceanviewcolombo@gmail.com"
+        var subject = "Test Message"
+        var message = "Hello From The Other Side"
+
+        val javaMailAPI = JavaMailAPI(this, email, subject, message)
+        javaMailAPI.execute()
+    }
+
     private fun addMember(){
         var email = memEmail.text.toString().trim()
 
@@ -70,6 +79,7 @@ class AddMemberADMIN :  Fragment() {
                             if(task.isSuccessful){
                                 Toast.makeText(context, "Successfully Registered", Toast.LENGTH_SHORT).show()
                                 progressBar.setVisibility(View.GONE)
+                                sendMail()
                             }else{
                                 Toast.makeText(context, "Try Again", Toast.LENGTH_SHORT).show()
                                 progressBar.setVisibility(View.GONE)

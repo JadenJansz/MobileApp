@@ -48,6 +48,9 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:19.1.0'
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     implementation 'com.android.volley:volley:1.2.1'
+    implementation files('libs/activation.jar')
+    implementation files('libs/additionnal.jar')
+    implementation files('libs/mail.jar')
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.22'
