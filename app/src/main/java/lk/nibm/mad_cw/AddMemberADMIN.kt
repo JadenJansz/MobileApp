@@ -43,9 +43,9 @@ class AddMemberADMIN :  Fragment() {
     }
 
     private fun sendMail() {
-        var email = "oceanviewcolombo@gmail.com"
-        var subject = "Test Message"
-        var message = "Hello From The Other Side"
+        var email = memEmail.text.toString().trim()
+        var subject = "Visit our app and activate your account "
+        var message = "Welcome and Thank you for joining Fitness Arcade!"
 
         val javaMailAPI = JavaMailAPI(this, email, subject, message)
         javaMailAPI.execute()
@@ -71,7 +71,7 @@ class AddMemberADMIN :  Fragment() {
         mAuth.createUserWithEmailAndPassword(email, "1234567")
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
-                    val user = User("","",email,"","","", "MEMBER")
+                    val user = User(FirebaseAuth.getInstance().currentUser!!.uid,"","","","",email,"","","", "MEMBER")
                     FirebaseDatabase.getInstance().getReference("Users")
                         .child(FirebaseAuth.getInstance().currentUser!!.uid)
                         .setValue(user).addOnCompleteListener {task ->

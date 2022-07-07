@@ -25,7 +25,7 @@
             android:src="@mipmap/profileicon" />
 
         <EditText
-            android:id="@+id/txt_name_viewMemberADMIN"
+            android:id="@+id/txt_"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="228dp"

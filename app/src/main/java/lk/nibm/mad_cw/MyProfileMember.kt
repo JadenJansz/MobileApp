@@ -48,7 +48,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         avatar = view.findViewById(R.id.avatar_viewMemberADMIN)
         avatar.setOnClickListener(this)
 
-        txtFname = view.findViewById(R.id.txt_name_viewMemberADMIN)
+        txtFname = view.findViewById(R.id.txt_)
         txtLname = view.findViewById(R.id.txt_email_viewMemberADMIN)
         txtNIC = view.findViewById(R.id.txt_nic_viewMemberADMIN)
         txtContact = view.findViewById(R.id.txt_contact_viewMemberADMIN)

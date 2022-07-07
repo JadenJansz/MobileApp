@@ -25,7 +25,7 @@
             android:src="@mipmap/profileicon" />
 
         <TextView
-            android:id="@+id/txt_name_viewMemberADMIN"
+            android:id="@+id/txt_"
             android:layout_width="243dp"
             android:layout_height="34dp"
             android:layout_marginTop="216dp"
@@ -36,28 +36,28 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <TextView
             android:id="@+id/txt_contact_viewMemberADMIN"
             android:layout_width="239dp"
             android:layout_height="36dp"
-            android:layout_marginTop="364dp"
+            android:layout_marginTop="412dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.18"
+            app:layout_constraintHorizontal_bias="0.203"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
 
         <TextView
             android:id="@+id/txt_emergency_viewMemberADMIN"
             android:layout_width="247dp"
             android:layout_height="35dp"
-            android:layout_marginTop="440dp"
+            android:layout_marginTop="488dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.189"
+            app:layout_constraintHorizontal_bias="0.213"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,11 +65,11 @@
             android:id="@+id/txt_nic_viewMemberADMIN"
             android:layout_width="247dp"
             android:layout_height="34dp"
-            android:layout_marginTop="512dp"
+            android:layout_marginTop="560dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.189"
+            app:layout_constraintHorizontal_bias="0.213"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -78,6 +78,18 @@
             android:layout_width="228dp"
             android:layout_height="30dp"
             android:layout_marginTop="292dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.169"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_dob_viewMemberADMIN"
+            android:layout_width="228dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="352dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintEnd_toEndOf="parent"
