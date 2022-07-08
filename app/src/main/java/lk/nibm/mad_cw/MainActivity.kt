@@ -108,11 +108,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     progressBar.setVisibility(View.GONE)
                                     //this.finish()
                                 }
-                                else{
+                                else if(dataSnapshot.child("role").getValue() == "MEMBER" && dataSnapshot.child("active").getValue() == "Y"){
                                     var memberHomePage = Intent(this, MemberHome::class.java)
                                     startActivity(memberHomePage)
                                     progressBar.setVisibility(View.GONE)
                                     //this.finish()
+                                }
+                                else{
+                                    Toast.makeText(this, "Your Account Has Been Disabled! Contact Your Administrator!", Toast.LENGTH_SHORT).show()
+                                    progressBar.setVisibility(View.GONE)
                                 }
                             }
                         }

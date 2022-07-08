@@ -23,7 +23,6 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
     lateinit var btnSubmitExercise : Button
     lateinit var dateText : TextView
     lateinit var weekText : TextView
-    lateinit var lastUpdated : TextView
     lateinit var layoutList : LinearLayout
     private lateinit var progressBar : ProgressBar
     lateinit var lblLastUpdated : TextView
@@ -45,7 +44,6 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
         layoutList = view.findViewById(R.id.layout_list)
         progressBar = view.findViewById(R.id.progressBar)
-        lastUpdated = view.findViewById(R.id.lbl_lastUpdated)
         weekText = view.findViewById(R.id.txt_week)
         lblLastUpdated = view.findViewById(R.id.lbl_lastUpdated)
 

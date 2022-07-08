@@ -25,7 +25,7 @@
             android:src="@mipmap/profileicon" />
 
         <TextView
-            android:id="@+id/txt_"
+            android:id="@+id/txt_name_viewMemberADMIN"
             android:layout_width="243dp"
             android:layout_height="34dp"
             android:layout_marginTop="216dp"
@@ -99,10 +99,10 @@
 
         <Button
             android:id="@+id/btn_viewMemberADMIN"
-            android:layout_width="145dp"
-            android:layout_height="46dp"
+            android:layout_width="152dp"
+            android:layout_height="55dp"
             android:layout_marginTop="660dp"
-            android:text="Delete Member"
+            android:text="Disable Account"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"

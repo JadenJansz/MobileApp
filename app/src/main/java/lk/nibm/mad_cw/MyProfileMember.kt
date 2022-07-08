@@ -99,6 +99,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
     private fun saveProfilePic(){
         var openGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(openGallery, 1000)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, Imagedata: Intent?) {

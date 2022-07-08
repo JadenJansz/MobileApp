@@ -259,7 +259,8 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
             "dob" to dobText,
             "age" to age.toString(),
             "contact" to contact,
-            "emergency" to emergencyContact
+            "emergency" to emergencyContact,
+            "active" to "Y"
         )
         database.child(FirebaseAuth.getInstance().currentUser!!.uid).updateChildren(user)
             .addOnSuccessListener {

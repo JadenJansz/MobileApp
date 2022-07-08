@@ -7,8 +7,9 @@ import android.widget.ImageView
 import com.google.firebase.storage.StorageReference
 
 data class UserArray(var uid: String ?= null,var fname: String ?= null, var lname: String?= null, var email: String?= null,var dob : String?= null, var profileImage:String?= null, var contact: String?= null,
-        var emergency: String?= null, var nic: String?= null) : Parcelable {
+        var emergency: String?= null, var nic: String?= null, var active: String?= null) : Parcelable {
     constructor(parcel: Parcel) : this(
+        parcel.readString(),
         parcel.readString(),
         parcel.readString(),
         parcel.readString(),
@@ -31,6 +32,7 @@ data class UserArray(var uid: String ?= null,var fname: String ?= null, var lnam
         parcel.writeString(contact)
         parcel.writeString(emergency)
         parcel.writeString(nic)
+        parcel.writeString(active)
     }
 
     override fun describeContents(): Int {
@@ -46,5 +48,6 @@ data class UserArray(var uid: String ?= null,var fname: String ?= null, var lnam
             return arrayOfNulls(size)
         }
     }
+
 
 }
