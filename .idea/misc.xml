@@ -3,6 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/button_bg.xml" value="0.1755" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/edittext_bg.xml" value="0.1755" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/ic_wave.xml" value="0.1445" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/login_back.xml" value="0.1525" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/radius_bg.xml" value="0.146" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/activity_admin_home.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/activity_forgot_password.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/activity_member_home.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/activity_view_member_admin.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/add_member_admin.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/display_exercises.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/search_exercises.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/layout/view_members_admin.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/menu/drawer_menu.xml" value="0.1796875" />
+        <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/menu/member_drawer_menu.xml" value="0.1796875" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/button_bg.xml" value="0.129" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/edittext_bg.xml" value="0.1" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/radius_bg.xml" value="0.1" />
