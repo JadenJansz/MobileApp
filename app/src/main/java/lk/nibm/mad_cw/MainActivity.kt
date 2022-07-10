@@ -92,27 +92,29 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         Log.d("Before", "Listener")
         mAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) {task ->
-                Log.d("Listener", "")
                 if(task.isSuccessful){
-                    var user : FirebaseUser? = FirebaseAuth.getInstance().currentUser
-                    Log.d("Listener", "")
+                    val user : FirebaseUser? = FirebaseAuth.getInstance().currentUser
                     if(user!!.isEmailVerified()){
                         reference = FirebaseDatabase.getInstance().getReference("Users")
                         reference.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnCompleteListener(this) { task ->
                             if(task.isSuccessful){
-                                var dataSnapshot : DataSnapshot = task.getResult()
+                                val dataSnapshot : DataSnapshot = task.getResult()
 
                                 if(dataSnapshot.child("role").getValue() == "ADMIN"){
-                                    var adminPage = Intent(this, AdminHome::class.java)
+                                    val adminPage = Intent(this, AdminHome::class.java)
                                     startActivity(adminPage)
                                     progressBar.setVisibility(View.GONE)
                                     //this.finish()
                                 }
-                                else{
-                                    var memberHomePage = Intent(this, MemberHome::class.java)
+                                else if(dataSnapshot.child("role").getValue() == "MEMBER" && dataSnapshot.child("active").getValue() == "Y"){
+                                    val memberHomePage = Intent(this, MemberHome::class.java)
                                     startActivity(memberHomePage)
                                     progressBar.setVisibility(View.GONE)
                                     //this.finish()
+                                }
+                                else{
+                                    Toast.makeText(this, "Your Account Has Been Disabled! Contact Your Administrator!", Toast.LENGTH_SHORT).show()
+                                    progressBar.setVisibility(View.GONE)
                                 }
                             }
                         }
@@ -122,10 +124,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         reference = FirebaseDatabase.getInstance().getReference("Users")
                         reference.child(FirebaseAuth.getInstance().currentUser!!.uid).get().addOnCompleteListener(this) { task ->
                             if(task.isSuccessful){
-                                var dataSnapshot : DataSnapshot = task.getResult()
+                                val dataSnapshot : DataSnapshot = task.getResult()
 
                                 if(dataSnapshot.child("nic").getValue() == ""){
-                                    var newRegistrationPage = Intent(this, NewRegistration::class.java)
+                                    val newRegistrationPage = Intent(this, NewRegistration::class.java)
                                     startActivity(newRegistrationPage)
                                     progressBar.setVisibility(View.GONE)
                                     //this.finish()
@@ -146,7 +148,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
                 }
                 else{
-                    Log.d("Listener", "")
                     Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
                     progressBar.setVisibility(View.GONE)
                 }

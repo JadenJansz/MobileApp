@@ -57,7 +57,6 @@ class SeacrhExercises : Fragment() {
             }
 
             override fun onQueryTextChange(p0: String): Boolean {
-                Log.d("Response", "lllllllllllllllllllllll")
                 getExercises(p0)
                 return true
             }
@@ -87,7 +86,6 @@ class SeacrhExercises : Fragment() {
             override fun onFailure(request: Request?, e: IOException?) {
                 val context : Context? = null
                 Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
-                Log.d("Error", "mmmmmmmmmmmmmmmmm")
             }
 
             override fun onResponse(response: Response?) {

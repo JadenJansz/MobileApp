@@ -48,7 +48,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         avatar = view.findViewById(R.id.avatar_viewMemberADMIN)
         avatar.setOnClickListener(this)
 
-        txtFname = view.findViewById(R.id.txt_name_viewMemberADMIN)
+        txtFname = view.findViewById(R.id.txt_)
         txtLname = view.findViewById(R.id.txt_email_viewMemberADMIN)
         txtNIC = view.findViewById(R.id.txt_nic_viewMemberADMIN)
         txtContact = view.findViewById(R.id.txt_contact_viewMemberADMIN)
@@ -99,6 +99,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
     private fun saveProfilePic(){
         var openGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(openGallery, 1000)
+
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, Imagedata: Intent?) {

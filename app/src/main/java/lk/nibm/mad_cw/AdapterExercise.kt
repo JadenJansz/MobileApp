@@ -46,7 +46,6 @@ class AdapterExercise(context: Context, jsonArray : JSONArray) :  RecyclerView.A
 
          try {
 
-             Log.d("OOOOOOOOOOOOOOOOOOOOOO", jsonArray.toString())
              val jsonItem = jsonArray.getJSONObject(position)
 
              gifUrl = jsonItem.getString("gifUrl").toString()
@@ -64,7 +63,6 @@ class AdapterExercise(context: Context, jsonArray : JSONArray) :  RecyclerView.A
     }
 
     override fun getItemCount(): Int {
-        Log.d("pppppppppppppppppppp", jsonArray.length().toString())
         return jsonArray.length()
     }
 

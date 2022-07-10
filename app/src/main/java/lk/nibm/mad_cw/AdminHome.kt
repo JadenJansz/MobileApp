@@ -54,10 +54,10 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
-        if(savedInstanceState == null){
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  AddMemberADMIN()).commit()
-            navigationView.setCheckedItem(R.id.add_member)
-        }
+//        if(savedInstanceState == null){
+//            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  AddMemberADMIN()).commit()
+//            navigationView.setCheckedItem(R.id.add_member)
+//        }
 
         var header : View = navigationView.getHeaderView(0)
 

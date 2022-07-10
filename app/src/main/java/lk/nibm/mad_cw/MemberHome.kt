@@ -1,5 +1,7 @@
 package lk.nibm.mad_cw
 
+import android.app.Activity
+import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
 import android.graphics.BitmapFactory
@@ -16,6 +18,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -23,9 +26,15 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.razorpay.Checkout
+import com.razorpay.PaymentResultListener
+import org.json.JSONException
+import org.json.JSONObject
 import java.io.File
+import kotlin.properties.Delegates
 
-class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
+    PaymentResultListener {
 
     private lateinit var drawer : DrawerLayout
     private lateinit var avatar : ImageView
@@ -56,10 +65,10 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
-        if(savedInstanceState == null){
-            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  MyProfileMember()).commit()
-            navigationView.setCheckedItem(R.id.my_profile)
-        }
+//        if(savedInstanceState == null){
+//            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  UseClass).commit()
+//            navigationView.setCheckedItem(R.id.my_profile)
+//        }
 
         var header : View = navigationView.getHeaderView(0)
 
@@ -104,8 +113,18 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  MyProfileMember()).commit()
             }
 
+            R.id.track_workout -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  EnterFitnessStatusMEMBER()).commit()
+            }
+
             R.id.search_exercises -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  SeacrhExercises()).commit()
+            }
+
+            R.id.payment -> {
+//                var payment = Intent(this, PaymentMEMBER::class.java)
+//                startActivity(payment)
+                doPayment()
             }
 
             R.id.logout -> {
@@ -147,5 +166,39 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
                     Toast.makeText(this, "Error Loading Data", Toast.LENGTH_SHORT).show()
                 }
             }
+    }
+
+    private fun doPayment(){
+        val checkOut : Checkout = Checkout()
+
+        checkOut.setKeyID("rzp_test_qPDDRARmQCv77P")
+        checkOut.setImage(R.drawable.profileicon)
+
+        val jsonObject : JSONObject = JSONObject()
+
+        try {
+            jsonObject.put("name", "D's GYM")
+            jsonObject.put("description", "Montly Payment")
+            jsonObject.put("theme.color","#000000")
+            jsonObject.put("currency", "LKR")
+            jsonObject.put("amount", "2000")
+            jsonObject.put("prefill.contact", "071 563 9188")
+            jsonObject.put("prefill.email", "dsgymnasiummattegoda@gmail.com")
+
+            checkOut.open(this, jsonObject)
+        }catch (e : JSONException){
+            e.printStackTrace()
+        }
+    }
+
+    override fun onPaymentSuccess(p0: String?) {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Payment ID")
+        builder.setMessage(p0)
+        builder.show()
+    }
+
+    override fun onPaymentError(p0: Int, p1: String?) {
+        Toast.makeText(this, p1, Toast.LENGTH_SHORT).show()
     }
 }

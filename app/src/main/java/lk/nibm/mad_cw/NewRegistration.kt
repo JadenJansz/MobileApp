@@ -2,7 +2,9 @@ package lk.nibm.mad_cw
 
 //import android.support.v7.app.AppCompatActivity
 
+import android.annotation.SuppressLint
 import android.app.Activity
+import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.net.Uri
@@ -24,17 +26,21 @@ import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import java.io.File
 import java.net.URI
+import java.util.*
+import kotlin.properties.Delegates
 
 
 class NewRegistration : AppCompatActivity(), View.OnClickListener {
 
     private lateinit var signUp : Button
 
+    private var age : Int = 0
+
     private lateinit var avatar : ImageView
     private lateinit var txtFname : EditText
     private lateinit var txtLname : EditText
-    private lateinit var txtEmail : EditText
     private lateinit var txtNIC : EditText
+    private lateinit var txtDob : TextView
     private lateinit var txtContact : EditText
     private lateinit var txtEmergency : EditText
     private var txtPassword : EditText? = null
@@ -44,6 +50,9 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
     private lateinit var mAuth : FirebaseAuth
     private lateinit var database : DatabaseReference
     private lateinit var storageReference: StorageReference
+    private val calenderInstance: Calendar = Calendar.getInstance()
+    private var yearText : Int = 0
+    private val dob = calenderInstance
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -59,9 +68,11 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         avatar = findViewById(R.id.avatar_new_reg)
         avatar.setOnClickListener(this)
 
+        txtDob = findViewById(R.id.txt_dob)
+        txtDob.setOnClickListener(this)
+
         txtFname = findViewById(R.id.txt_fname)
         txtLname = findViewById(R.id.txt_lname)
-        txtEmail = findViewById(R.id.txt_email)
         txtNIC = findViewById(R.id.txt_nic)
         txtContact = findViewById(R.id.txt_contact)
         txtEmergency = findViewById(R.id.txt_emergency_contact)
@@ -83,7 +94,27 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
             R.id.avatar_new_reg -> {
                 saveProfilePic()
             }
+
+            R.id.txt_dob -> {
+                showDatePickerDialog()
+            }
         }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private fun showDatePickerDialog(){
+        val year = calenderInstance.get(Calendar.YEAR)
+        val month = calenderInstance.get(Calendar.MONTH)
+        val day = calenderInstance.get(Calendar.DAY_OF_MONTH)
+
+        val datePicker =
+            DatePickerDialog(this, DatePickerDialog.OnDateSetListener{ view, year, month, day ->
+                txtDob.setText("$day-$month-$year")
+                dob.set(year, month, day)
+                yearText = year
+            }, year, month, day)
+        Log.d("Age",yearText.toString())
+        datePicker.show()
     }
 
     private fun saveProfilePic(){
@@ -96,7 +127,7 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
 
         if (requestCode == 1000){
             if (resultCode === Activity.RESULT_OK){
-                var imageUri : Uri? = Imagedata!!.data
+                val imageUri : Uri? = Imagedata!!.data
                 avatar.setImageURI(imageUri)
 
                 uploadImageToFirebase(imageUri!!)
@@ -110,9 +141,9 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         fileRef.putFile(imageUri).addOnCompleteListener(this) {task ->
             if (task.isSuccessful){
                 Toast.makeText(this, "Photo Uploaded", Toast.LENGTH_SHORT).show()
-                var downloadUrl : String = fileRef.downloadUrl.toString()
+                val downloadUrl : String = fileRef.downloadUrl.toString()
 
-                var userRef = FirebaseDatabase.getInstance().reference.child("Users").child(mAuth.currentUser!!.uid)
+                val userRef = FirebaseDatabase.getInstance().reference.child("Users").child(mAuth.currentUser!!.uid)
                 userRef.child("profileImage").setValue(downloadUrl)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
@@ -134,14 +165,16 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
     }
 
     private fun registerUser(){
-        var fname : String = txtFname.text.toString().trim()
-        var lname : String = txtLname.text.toString().trim()
-        var email : String = txtEmail.text.toString().trim()
-        var nic : String = txtNIC.text.toString().trim()
-        var contact : String = txtContact.text.toString().trim()
-        var emergencyContact : String = txtEmergency.text.toString().trim()
-        var password : String = txtPassword?.text.toString().trim()
-        var conPassword : String = txtConfirmPassword?.text.toString().trim()
+        val fname : String = txtFname.text.toString().trim()
+        val lname : String = txtLname.text.toString().trim()
+        val nic : String = txtNIC.text.toString().trim()
+        val contact : String = txtContact.text.toString().trim()
+        val emergencyContact : String = txtEmergency.text.toString().trim()
+        val password : String = txtPassword?.text.toString().trim()
+        val conPassword : String = txtConfirmPassword?.text.toString().trim()
+        val dobText : String = txtDob.text.toString().trim()
+
+        age = yearText - dob.get(Calendar.YEAR);
 
         if (fname.isEmpty()){
             txtFname.setError("Full Name is required")
@@ -166,6 +199,12 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
             return
         }
 
+        if(dobText.isEmpty()){
+            txtDob.setError("DOB is required")
+            txtDob.requestFocus()
+            return
+        }
+
         if(contact.isEmpty()){
             txtContact.setError("Contact number is required")
             txtContact.requestFocus()
@@ -185,12 +224,6 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         if(emergencyContact.length < 10){
             txtEmergency.setError("Invalid Contact number")
             txtEmergency.requestFocus()
-            return
-        }
-
-        if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            txtEmail.setError("Full Name is required")
-            txtEmail.requestFocus()
             return
         }
 
@@ -219,11 +252,15 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
 
         database = FirebaseDatabase.getInstance().getReference("Users")
         val user = mapOf<String, String>(
+            "uid" to FirebaseAuth.getInstance().currentUser!!.uid,
             "fname" to fname,
             "lname" to lname,
             "nic" to nic,
+            "dob" to dobText,
+            "age" to age.toString(),
             "contact" to contact,
-            "emergency" to emergencyContact
+            "emergency" to emergencyContact,
+            "active" to "Y"
         )
         database.child(FirebaseAuth.getInstance().currentUser!!.uid).updateChildren(user)
             .addOnSuccessListener {

@@ -6,6 +6,9 @@
         <item android:id="@+id/my_profile"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="My Profile" />
+        <item android:id="@+id/track_workout"
+            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:title="Track Your Workouts" />
         <item android:id="@+id/check_fitness_status"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Check Fitness Status" />
