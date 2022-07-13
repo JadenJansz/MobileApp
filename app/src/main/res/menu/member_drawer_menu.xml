@@ -17,7 +17,7 @@
             android:title="Search Exercises" />
         <item android:id="@+id/payment"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
-            android:title="Do Payment" />
+            android:title="Make Payment" />
         <item android:id="@+id/logout"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Logout" />

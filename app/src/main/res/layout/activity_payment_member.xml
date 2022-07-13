@@ -4,51 +4,42 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    tools:context=".PaymentMEMBER">
 
     <EditText
-        android:id="@+id/txt_memEmail"
-        android:layout_width="259dp"
+        android:id="@+id/txt_feeAmount"
+        android:layout_width="175dp"
         android:layout_height="48dp"
         android:ems="10"
-        android:hint="User Email"
-        android:inputType="textPersonName"
+        android:hint="Rs. XXXX.XX"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.147" />
+        app:layout_constraintVertical_bias="0.207" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="135dp"
+        android:layout_height="45dp"
+        android:text="Enter Amount Amount To Be Payed"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.207" />
 
     <Button
-        android:id="@+id/btn_addMember"
+        android:id="@+id/btn_payment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Add Member"
+        android:text="Proceed To Payment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.392" />
-
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progressBar"
-        android:visibility="gone"
-        style="?android:attr/progressBarStyleLarge"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="259dp"
-        android:layout_height="40dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.279" />
-
+        app:layout_constraintVertical_bias="0.366" />
 </androidx.constraintlayout.widget.ConstraintLayout>

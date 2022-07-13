@@ -8,13 +8,9 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 
 
-class DBHelper(context: Context?, exerciseList: ArrayList<Exercises>) : SQLiteOpenHelper(context, "GymExercise.db", null, 1) {
+class DBHelper(context: Context?) : SQLiteOpenHelper(context, "GymExercise.db", null, 1) {
 
-    private var exercise : ArrayList<Exercises>
 
-    init {
-        exercise = exerciseList
-    }
     override fun onCreate(DB: SQLiteDatabase) {
         DB.execSQL("CREATE TABLE IF NOT EXISTS Exercise(UID TEXT , Date TEXT, Week TEXT,Name TEXT, Weight REAL, primary key(UID, Name, Week))")
     }
@@ -57,6 +53,25 @@ class DBHelper(context: Context?, exerciseList: ArrayList<Exercises>) : SQLiteOp
                 "Name, Date, Week, Weight " +
                 "from Exercise  " +
                 "ORDER BY WEEK DESC LIMIT (SELECT COUNT(DISTINCT Name) FROM Exercise) ", null)
+    }
+
+    fun getDataGraph(week: String, name: String): Cursor?{
+        val dB = this.writableDatabase
+
+        return dB.rawQuery("SELECT Week, Weight " +
+                "FROM Exercise WHERE Week LIKE '"+week+"' AND NAME LIKE '"+name+"'", null)
+    }
+
+    fun getWeekCount(): Cursor?{
+        val dB = this.writableDatabase
+
+        return dB.rawQuery("SELECT COUNT(DISTINCT Week) FROM Exercise ", null)
+    }
+
+    fun getName(): Cursor?{
+        val dB = this.writableDatabase
+
+        return dB.rawQuery("SELECT DISTINCT Name FROM Exercise", null)
     }
 
     fun getRowCount(): Long {
