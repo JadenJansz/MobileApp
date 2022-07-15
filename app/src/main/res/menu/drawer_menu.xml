@@ -9,9 +9,9 @@
         <item android:id="@+id/view_member"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="View Members" />
-        <item android:id="@+id/payment"
+        <item android:id="@+id/notice"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
-            android:title="Do Payment" />
+            android:title="Create Notice" />
         <item android:id="@+id/logout"
             android:icon="@drawable/ic_baseline_supervisor_account_24"
             android:title="Logout" />

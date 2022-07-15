@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.yalantis.ucrop.UCrop
 import java.io.File
 import java.net.URI
 import java.util.*
@@ -53,6 +54,9 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
     private val calenderInstance: Calendar = Calendar.getInstance()
     private var yearText : Int = 0
     private val dob = calenderInstance
+
+    private val CODE_IMAGE_GALLERY = 1
+    private val SAMPLE_CROPPED_IMG_NAME = "SampleCropping"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,26 +117,48 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
                 dob.set(year, month, day)
                 yearText = year
             }, year, month, day)
-        Log.d("Age",yearText.toString())
+        Log.e("Age",yearText.toString())
         datePicker.show()
     }
 
     private fun saveProfilePic(){
-        var openGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(openGallery, 1000)
+        startActivityForResult(
+            Intent().setAction(Intent.ACTION_GET_CONTENT)
+                .setType("image/*"), CODE_IMAGE_GALLERY
+        )
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, Imagedata: Intent?) {
-        super.onActivityResult(requestCode, resultCode, Imagedata)
-
-        if (requestCode == 1000){
-            if (resultCode === Activity.RESULT_OK){
-                val imageUri : Uri? = Imagedata!!.data
-                avatar.setImageURI(imageUri)
-
-                uploadImageToFirebase(imageUri!!)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CODE_IMAGE_GALLERY && resultCode == Activity.RESULT_OK) {
+            val imageUri = data!!.data
+            imageUri?.let { startCrop(it) }
+        } else if (requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK) {
+            val imageUriResultCrop = UCrop.getOutput(data!!)
+            if (imageUriResultCrop != null) {
+                avatar.setImageURI(imageUriResultCrop)
+                uploadImageToFirebase(imageUriResultCrop)
             }
         }
+    }
+
+    private fun startCrop(uri: Uri) {
+        var destinationFileName: String = SAMPLE_CROPPED_IMG_NAME
+        destinationFileName += ".jpg"
+        val uCrop = UCrop.of(uri, Uri.fromFile(File(this.getCacheDir(), destinationFileName)))
+        uCrop.withAspectRatio(1f, 1f)
+        uCrop.withMaxResultSize(450, 450)
+        uCrop.withOptions(getCropOptions())
+        uCrop.start(this)
+    }
+
+    private fun getCropOptions(): UCrop.Options {
+        val options = UCrop.Options()
+        options.setCompressionQuality(70)
+        options.setHideBottomControls(false)
+        options.setFreeStyleCropEnabled(true)
+
+        return options
     }
 
     private fun uploadImageToFirebase(imageUri : Uri){
@@ -174,8 +200,7 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         val conPassword : String = txtConfirmPassword?.text.toString().trim()
         val dobText : String = txtDob.text.toString().trim()
 
-        age = yearText - dob.get(Calendar.YEAR);
-
+        age = Calendar.getInstance().get(Calendar.YEAR) - dob.get(Calendar.YEAR)
         if (fname.isEmpty()){
             txtFname.setError("Full Name is required")
             txtFname.requestFocus()

@@ -52,14 +52,14 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
 
 
-        var toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         drawer = findViewById(R.id.drawer_layout)
-        var navigationView : NavigationView = findViewById(R.id.nav_view)
+        val navigationView : NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        var toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+        val toggle = ActionBarDrawerToggle(this, drawer, toolbar,
             R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
@@ -69,7 +69,7 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 //            navigationView.setCheckedItem(R.id.my_profile)
 //        }
 
-        var header : View = navigationView.getHeaderView(0)
+        val header : View = navigationView.getHeaderView(0)
 
         mAuth = FirebaseAuth.getInstance()
         getNavDetails()
@@ -128,6 +128,10 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.check_fitness_status -> {
                 val status = Intent(this, GraphViewer::class.java)
                 startActivity(status)
+            }
+
+            R.id.notice -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  ViewNoticeMember()).commit()
             }
 
             R.id.logout -> {

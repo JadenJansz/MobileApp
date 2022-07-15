@@ -5,7 +5,7 @@ import android.content.Intent
 import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.provider.MediaStore
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
+import com.yalantis.ucrop.UCrop
 import java.io.File
 
 class MyProfileMember :  Fragment(), View.OnClickListener {
@@ -33,6 +34,9 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
     lateinit var reference: DatabaseReference
     lateinit var storageReference: StorageReference
 
+    private val CODE_IMAGE_GALLERY = 1
+    private val SAMPLE_CROPPED_IMG_NAME = "SampleCropping"
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
         return inflater.inflate(R.layout.my_profile_member, container, false)
@@ -45,7 +49,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         mAuth = FirebaseAuth.getInstance()
 
 
-        avatar = view.findViewById(R.id.avatar_viewMemberADMIN)
+        avatar = view.findViewById(R.id.avatar_viewMember)
         avatar.setOnClickListener(this)
 
         txtFname = view.findViewById(R.id.txt_)
@@ -86,8 +90,12 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when(v?.id){
-            R.id.avatar_viewMemberADMIN -> {
-                saveProfilePic()
+            R.id.avatar_viewMember -> {
+//                saveProfilePic()
+                startActivityForResult(
+                    Intent().setAction(Intent.ACTION_GET_CONTENT)
+                        .setType("image/*"), CODE_IMAGE_GALLERY
+                )
             }
 
             R.id.btn_viewMemberADMIN -> {
@@ -96,34 +104,48 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         }
     }
 
-    private fun saveProfilePic(){
-        var openGallery = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
-        startActivityForResult(openGallery, 1000)
-
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, Imagedata: Intent?) {
-        super.onActivityResult(requestCode, resultCode, Imagedata)
-
-        if (requestCode == 1000){
-            if (resultCode === Activity.RESULT_OK){
-                var imageUri : Uri? = Imagedata!!.data
-                avatar.setImageURI(imageUri)
-
-                uploadImageToFirebase(imageUri!!)
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == CODE_IMAGE_GALLERY && resultCode == Activity.RESULT_OK) {
+            val imageUri = data!!.data
+            imageUri?.let { startCrop(it) }
+        } else if (requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK) {
+            val imageUriResultCrop = UCrop.getOutput(data!!)
+            if (imageUriResultCrop != null) {
+                avatar.setImageURI(imageUriResultCrop)
+                uploadImageToFirebase(imageUriResultCrop)
             }
         }
     }
 
+    private fun startCrop(uri: Uri) {
+        var destinationFileName: String = SAMPLE_CROPPED_IMG_NAME
+        destinationFileName += ".jpg"
+        val uCrop = UCrop.of(uri, Uri.fromFile(File(requireActivity().getCacheDir(), destinationFileName)))
+        uCrop.withAspectRatio(1f, 1f)
+        uCrop.withMaxResultSize(450, 450)
+        uCrop.withOptions(getCropOptions())
+        uCrop.start(requireActivity(), this)
+    }
+
+    private fun getCropOptions(): UCrop.Options {
+        val options = UCrop.Options()
+        options.setCompressionQuality(70)
+        options.setHideBottomControls(false)
+        options.setFreeStyleCropEnabled(true)
+
+        return options
+    }
+
     private fun uploadImageToFirebase(imageUri : Uri){
-        var fileRef : StorageReference = storageReference
+        val fileRef : StorageReference = storageReference
 
         fileRef.putFile(imageUri).addOnCompleteListener {task ->
             if (task.isSuccessful){
                 Toast.makeText(context, "Photo Uploaded", Toast.LENGTH_SHORT).show()
                 var downloadUrl : String = fileRef.child("Profile Images/"+mAuth.currentUser!!.uid+".jpg").downloadUrl.toString()
 
-                var userRef = FirebaseDatabase.getInstance().reference.child("Users").child(mAuth.currentUser!!.uid)
+                val userRef = FirebaseDatabase.getInstance().reference.child("Users").child(mAuth.currentUser!!.uid)
                 userRef.child("profileImage").setValue("https://firebasestorage.googleapis.com/v0/b/android-project-5438e.appspot.com/o/Profile%20Images%2F"+mAuth.currentUser!!.uid+".jpg?alt=media") //Had downloadUrl
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
@@ -144,11 +166,11 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
     }
 
     private fun updateMember(){
-        var fname : String = txtFname.text.toString()
-        var lname : String = txtLname.text.toString()
-        var nic : String = txtNIC.text.toString()
-        var contact : String = txtContact.text.toString()
-        var emergencyContact : String = txtEmergency.text.toString()
+        val fname : String = txtFname.text.toString()
+        val lname : String = txtLname.text.toString()
+        val nic : String = txtNIC.text.toString()
+        val contact : String = txtContact.text.toString()
+        val emergencyContact : String = txtEmergency.text.toString()
 
         if (fname.isEmpty()){
             txtFname.setError("Full Name is required")

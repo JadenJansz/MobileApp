@@ -13,7 +13,7 @@
 
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/avatar_viewMemberADMIN"
+            android:id="@+id/avatar_viewMember"
             android:layout_width="175dp"
             android:layout_height="145dp"
             app:layout_constraintBottom_toBottomOf="parent"

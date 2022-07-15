@@ -40,24 +40,39 @@ class ViewMemberADMIN : AppCompatActivity() {
             val nic : TextView = findViewById(R.id.txt_nic_viewMemberADMIN)
             val avatar : ImageView = findViewById(R.id.avatar_viewMemberADMIN)
 
-            uid = members.uid.toString()
-            name.text = members.fname + " " + members.lname
-            email.text = members.email
-            dob.text = members.dob
-            contact.text = members.contact
-            emergency.text = members.emergency
-            nic.text = members.nic
+            if(members.contact == ""){
+                val builder = this.let { AlertDialog.Builder(it) }
+                builder.setTitle("Non - Functional Account")
+                builder.setMessage("This account is still not activated by the member")
+                builder.setCancelable(false);
+                builder.setPositiveButton("OKAY", DialogInterface.OnClickListener {
+                        dialog, id ->
+                    dialog.cancel()
+                    finish()
+                })
+                val alert = builder.create()
 
-            Glide.with(this).load(members.profileImage).into(avatar)
+                alert.show()
+            }else if(members.contact != ""){
+                uid = members.uid.toString()
+                name.text = members.fname + " " + members.lname
+                email.text = members.email
+                dob.text = members.dob
+                contact.text = members.contact
+                emergency.text = members.emergency
+                nic.text = members.nic
+
+                Glide.with(this).load(members.profileImage).into(avatar)
+            }
         }
 
-//        checkAccountStatus()
+        checkAccountStatus()
 
         btnDelete = findViewById(R.id.btn_viewMemberADMIN)
         changeButtonText()
 
         btnDelete.setOnClickListener(){
-            var l = checkAccountStatus()
+            val l = checkAccountStatus()
             if(l){
                 val builder = this.let { AlertDialog.Builder(it) }
                 builder.setTitle("Disable Member Account")
@@ -92,13 +107,11 @@ class ViewMemberADMIN : AppCompatActivity() {
                 val alert = builder.create()
                 alert.show()
             }
-
-
         }
     }
 
     private fun changeButtonText(){
-        var l = checkAccountStatus()
+        val l = checkAccountStatus()
         if(l){
             btnDelete.setText("Disable Account")
         }
@@ -134,16 +147,20 @@ class ViewMemberADMIN : AppCompatActivity() {
     private fun checkAccountStatus() : Boolean{
 
         reference = FirebaseDatabase.getInstance().getReference("Users")
-        reference.child("yPVTjX5GCfVn0Fepu1r3x9Kk44L2").get().addOnCompleteListener(this) { task ->
+        reference.child(uid).get().addOnCompleteListener(this) { task ->
+            Log.e("UID", uid.toString())
             if (task.isSuccessful) {
-                var dataSnapshot: DataSnapshot = task.result
+                val dataSnapshot: DataSnapshot = task.result
 
                 if(dataSnapshot.child("active").value == "Y")
                 {
                     status = true
+                    Log.e("oooooooooo", status.toString())
                 }
                 else if (dataSnapshot.child("active").value == "N"){
+
                     status = false
+                    Log.e("pppppppp", status.toString())
                 }
                 Log.e("DATA", dataSnapshot.toString())
             }
