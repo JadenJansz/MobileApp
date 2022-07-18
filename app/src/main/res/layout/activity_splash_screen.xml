@@ -20,6 +20,6 @@
        android:layout_marginEnd="69dp"
        android:layout_marginBottom="252dp"
 
-       android:src="@mipmap/DsGymLogo" />
+       android:src="@mipmap/ds_gym_logo" />
 
 </RelativeLayout>
