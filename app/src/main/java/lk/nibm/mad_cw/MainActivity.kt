@@ -3,6 +3,7 @@ package lk.nibm.mad_cw
 import android.content.Intent
 //import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import android.util.Patterns
 import android.view.View
@@ -28,11 +29,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     lateinit var progressBar : ProgressBar
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         requestWindowFeature(Window.FEATURE_NO_TITLE)
         getSupportActionBar()?.hide()
         setContentView(R.layout.activity_main)
+
+
 
         mAuth = FirebaseAuth.getInstance()
 

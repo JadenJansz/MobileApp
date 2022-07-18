@@ -3,6 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Android Studio/MobileApp/app/src/main/res/layout/activity_main.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android Studio/MobileApp/app/src/main/res/layout/activity_splash_screen.xml" value="0.22826086956521738" />
+        <entry key="..\:/Android Studio/MobileApp/app/src/main/res/layout/activity_view_member_admin.xml" value="0.14010416666666667" />
         <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/button_bg.xml" value="0.1755" />
         <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/edittext_bg.xml" value="0.1755" />
         <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/drawable/ic_wave.xml" value="0.1445" />

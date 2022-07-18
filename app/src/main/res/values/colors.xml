@@ -11,4 +11,5 @@
     <color name="blue001">#5862EF</color>
     <color name="lightblue001">#6F80EF</color>
     <color name="lightblue002">#7E94EF</color>
+    <color name="lightbluetint">#caf0ff</color>
 </resources>
