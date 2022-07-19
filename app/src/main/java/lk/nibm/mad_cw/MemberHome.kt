@@ -33,8 +33,7 @@ import org.json.JSONObject
 import java.io.File
 import kotlin.properties.Delegates
 
-class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener,
-    PaymentResultListener {
+class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener{
 
     private lateinit var drawer : DrawerLayout
     private lateinit var avatar : ImageView
@@ -53,14 +52,14 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 
 
 
-        var toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         drawer = findViewById(R.id.drawer_layout)
-        var navigationView : NavigationView = findViewById(R.id.nav_view)
+        val navigationView : NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        var toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+        val toggle = ActionBarDrawerToggle(this, drawer, toolbar,
             R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
@@ -70,7 +69,7 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
 //            navigationView.setCheckedItem(R.id.my_profile)
 //        }
 
-        var header : View = navigationView.getHeaderView(0)
+        val header : View = navigationView.getHeaderView(0)
 
         mAuth = FirebaseAuth.getInstance()
         getNavDetails()
@@ -122,13 +121,21 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             }
 
             R.id.payment -> {
-//                var payment = Intent(this, PaymentMEMBER::class.java)
-//                startActivity(payment)
-                doPayment()
+                val payment = Intent(this, PaymentMEMBER::class.java)
+                startActivity(payment)
+            }
+
+            R.id.check_fitness_status -> {
+                val status = Intent(this, GraphViewer::class.java)
+                startActivity(status)
+            }
+
+            R.id.notice -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  ViewNoticeMember()).commit()
             }
 
             R.id.logout -> {
-                var builder =  AlertDialog.Builder(this)
+                val builder =  AlertDialog.Builder(this)
                 builder.setTitle("Log Out")
                 builder.setMessage("Are You Sure ?")
                 builder.setPositiveButton("Leave", DialogInterface.OnClickListener {
@@ -166,39 +173,5 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
                     Toast.makeText(this, "Error Loading Data", Toast.LENGTH_SHORT).show()
                 }
             }
-    }
-
-    private fun doPayment(){
-        val checkOut : Checkout = Checkout()
-
-        checkOut.setKeyID("rzp_test_qPDDRARmQCv77P")
-        checkOut.setImage(R.drawable.profileicon)
-
-        val jsonObject : JSONObject = JSONObject()
-
-        try {
-            jsonObject.put("name", "D's GYM")
-            jsonObject.put("description", "Montly Payment")
-            jsonObject.put("theme.color","#000000")
-            jsonObject.put("currency", "LKR")
-            jsonObject.put("amount", "2000")
-            jsonObject.put("prefill.contact", "071 563 9188")
-            jsonObject.put("prefill.email", "dsgymnasiummattegoda@gmail.com")
-
-            checkOut.open(this, jsonObject)
-        }catch (e : JSONException){
-            e.printStackTrace()
-        }
-    }
-
-    override fun onPaymentSuccess(p0: String?) {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Payment ID")
-        builder.setMessage(p0)
-        builder.show()
-    }
-
-    override fun onPaymentError(p0: Int, p1: String?) {
-        Toast.makeText(this, p1, Toast.LENGTH_SHORT).show()
     }
 }

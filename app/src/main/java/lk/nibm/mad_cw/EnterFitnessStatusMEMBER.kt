@@ -12,7 +12,6 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
 import java.util.*
 
 
@@ -30,7 +29,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
     var currentWeek : Int = 0
 
     var exerciseList : ArrayList<Exercises> = ArrayList()
-    var DB : DBHelper = DBHelper(context, exerciseList)
+    var DB : DBHelper = DBHelper(context)
 
 
 
@@ -55,7 +54,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
         drop = view.findViewById(R.id.drop)
         drop.setOnClickListener(){
-            DB = DBHelper(context, exerciseList)
+            DB = DBHelper(context)
             DB.deleteAllData()
         }
 
@@ -177,7 +176,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
     }
 
     private fun addDataToDatabase(){
-        DB = DBHelper(context, exerciseList)
+        DB = DBHelper(context)
 
         try {
             if(weekText.text.toString().toInt()  == currentWeek + 1 ) {
@@ -215,7 +214,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
     private fun showCurrentData(){
 
-        DB = DBHelper(context, exerciseList)
+        DB = DBHelper(context)
 
         try {
             val res: Cursor? = DB.getData(FirebaseAuth.getInstance().currentUser!!.uid)

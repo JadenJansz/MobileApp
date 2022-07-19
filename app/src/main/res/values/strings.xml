@@ -3,4 +3,10 @@
 
     <string name="navigation_drawer_open">Open Navigation drawer</string>
     <string name="navigation_drawer_close">Close Navigation drawer</string>
+
+    <string name="spinner">Spinner</string>
+    <string-array name="spinner">
+        <item>MEMBER</item>
+        <item>ADMIN</item>
+    </string-array>
 </resources>
