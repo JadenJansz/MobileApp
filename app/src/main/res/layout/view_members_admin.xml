@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ViewMembersADMIN">
 
+    <ImageView
+        android:id="@+id/img_memberback"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/pattern002"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/row_exercise"
         android:layout_width="409dp"

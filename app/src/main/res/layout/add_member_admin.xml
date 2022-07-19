@@ -3,14 +3,55 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/teal_200">
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_addback"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/pattern002"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bac_add"
+        android:layout_width="350dp"
+        android:layout_height="350dp"
+        android:background="@drawable/card_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".55"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/lbl_add"
+        android:layout_width="200dp"
+        android:layout_height="52dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Add Member"
+        android:textColor="@color/lightblue001"
+        android:textSize="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.37" />
 
     <EditText
         android:id="@+id/txt_memEmail"
-        android:layout_width="259dp"
+        android:layout_width="300dp"
         android:layout_height="48dp"
         android:ems="10"
+        android:background="@drawable/edittext_bg"
+        android:paddingLeft="20dp"
         android:hint="Member Email"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -18,19 +59,25 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.268" />
+        app:layout_constraintVertical_bias="0.5"
+        android:elevation="15dp"
+        android:layout_gravity="center"/>
 
     <Button
         android:id="@+id/btn_addMember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="150dp"
+        android:layout_height="51dp"
+        android:textColor="@color/white"
         android:text="Add Member"
+        android:textSize="15dp"
+        android:background="@drawable/button_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintVertical_bias="0.63"/>
+
 
     <ProgressBar
         android:layout_width="wrap_content"

@@ -17,7 +17,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/black"
+            android:background="@color/blue001"
             android:id="@+id/toolbar"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -26,7 +26,64 @@
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" >
+            android:layout_height="match_parent"
+            android:background="@color/offwhite">
+
+            <TextView
+                android:id="@+id/lbl_welcome000"
+                android:layout_width="240dp"
+                android:layout_height="65dp"
+                android:fontFamily="@font/samsungsans_bold"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#999999"
+                android:textSize="30sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                android:layout_marginTop="50dp"/>
+
+            <ImageView
+                android:id="@+id/img_memhome"
+                android:layout_width="415dp"
+                android:layout_height="540dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/memHome1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".35"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.137"
+                tools:ignore="MissingConstraints"
+                android:layout_marginTop="70dp"
+                android:elevation="25dp"
+                android:layout_gravity="center"/>
+
+            <TextView
+                android:id="@+id/lbl_welcome002"
+                android:layout_width="310dp"
+                android:layout_height="120dp"
+                android:fontFamily="@font/samsungsans_bold"
+                android:text="Ds Gym"
+                android:textAlignment="center"
+                android:textColor="@color/lightblue002"
+                android:textSize="80dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="50dp"
+                />
 
 
         </FrameLayout>

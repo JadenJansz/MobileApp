@@ -1,75 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingBottom="20dp"
-    android:background="@color/teal_200">
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bac_add"
+        android:layout_width="370dp"
+        android:layout_height="560dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="95dp"
+        android:background="@drawable/card_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" />
 
     <pl.droidsonroids.gif.GifImageView
         android:id="@+id/gif_lol"
         android:layout_width="300dp"
         android:layout_height="300dp"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp" />
-
-    <TextView
-        android:id="@+id/lbl_exercise_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="400dp"
-        android:text="Name" />
+        android:layout_marginTop="130dp" />
 
     <TextView
         android:id="@+id/exercise_name"
-        android:layout_width="292dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="400dp" />
-
-    <TextView
-        android:id="@+id/lbl_exercise_bodypart"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="51dp"
         android:layout_marginTop="440dp"
-        android:text="Body Part" />
+        android:fontFamily="@font/samsungsans_medium"
+        android:paddingLeft="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/gray"
+        android:textSize="24dp" />
 
     <TextView
         android:id="@+id/exercise_bodypart"
-        android:layout_width="271dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="440dp" />
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="490dp"
+        android:drawableStart="@drawable/check_icon"
+        android:fontFamily="@font/samsungsans_regular"
+        android:paddingLeft="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/lightgray"
+        android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/lbl_exercise_target"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="480dp"
-        android:text="Target" />
 
     <TextView
         android:id="@+id/exercise_target"
-        android:layout_width="271dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="480dp" />
-
-    <TextView
-        android:id="@+id/lbl_exercise_equipment"
-        android:layout_width="72dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="520dp"
-        android:text="Equipment" />
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="540dp"
+        android:drawableStart="@drawable/check_icon"
+        android:fontFamily="@font/samsungsans_regular"
+        android:paddingLeft="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/lightgray"
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/exercise_equipment"
-        android:layout_width="271dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="110dp"
-        android:layout_marginTop="520dp" />
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="51dp"
+        android:layout_marginTop="590dp"
+        android:drawableStart="@drawable/check_icon"
+        android:fontFamily="@font/samsungsans_regular"
+        android:paddingLeft="20dp"
+        android:textAlignment="center"
+        android:textColor="@color/lightgray"
+        android:textSize="20dp" />
 
 </RelativeLayout>

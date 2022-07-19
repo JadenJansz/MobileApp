@@ -17,7 +17,7 @@
         <androidx.appcompat.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/black"
+            android:background="@color/blue001"
             android:id="@+id/toolbar"
             android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
             app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
@@ -26,17 +26,75 @@
         <FrameLayout
             android:id="@+id/fragment_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/lbl_welcome"
+                android:layout_width="240dp"
+                android:layout_height="65dp"
+                android:fontFamily="@font/samsungsans_bold"
+                android:text="Welcome"
+                android:textAlignment="center"
+                android:textColor="#999999"
+                android:textSize="32sp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                android:layout_marginTop="25dp"/>
+
+            <ImageView
+                android:id="@+id/img_adminhome"
+                android:layout_width="260dp"
+                android:layout_height="550dp"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/admin_home"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHeight_percent=".35"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.137"
+                tools:ignore="MissingConstraints"
+                android:layout_marginTop="120dp"
+                android:layout_marginLeft="75dp"
+                android:elevation="25dp"/>
+
+            <TextView
+                android:id="@+id/lbl_dsgym"
+                android:layout_width="330dp"
+                android:layout_height="120dp"
+                android:fontFamily="@font/samsungsans_bold"
+                android:text="Ds Gym"
+                android:textAlignment="center"
+                android:textColor="@color/lightblue002"
+                android:textSize="90dp"
+                android:textStyle="italic"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.01"
+                android:layout_marginTop="45dp"
+                android:layout_marginLeft="40dp"
+                />
+
+        </FrameLayout>
 
     </LinearLayout>
-        <com.google.android.material.navigation.NavigationView
+        <!--<com.google.android.material.navigation.NavigationView
             android:layout_width="wrap_content"
             android:layout_marginTop="25dp"
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:id="@+id/nav_view"
             app:headerLayout="@layout/nav_header"
-            app:menu="@menu/drawer_menu" />
+            app:menu="@menu/drawer_menu" />-->
 
 
 </androidx.drawerlayout.widget.DrawerLayout>

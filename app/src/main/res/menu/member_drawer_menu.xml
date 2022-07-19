@@ -3,23 +3,29 @@
     xmlns:tools = "http://schemas.android.com/tools"
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
-        <item android:id="@+id/my_profile"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+        <item
+            android:id="@+id/my_profile"
+            android:icon="@drawable/profile_icon"
             android:title="My Profile" />
-        <item android:id="@+id/track_workout"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+        <item
+            android:id="@+id/track_workout"
+            android:icon="@drawable/track_icon"
             android:title="Track Your Workouts" />
-        <item android:id="@+id/check_fitness_status"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+        <item
+            android:id="@+id/check_fitness_status"
+            android:icon="@mipmap/check_icon"
             android:title="Check Fitness Status" />
-        <item android:id="@+id/search_exercises"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+        <item
+            android:id="@+id/search_exercises"
+            android:icon="@drawable/search_icon"
             android:title="Search Exercises" />
-        <item android:id="@+id/payment"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+        <item
+            android:id="@+id/payment"
+            android:icon="@drawable/payment_icon"
             android:title="Do Payment" />
-        <item android:id="@+id/logout"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+        <item
+            android:id="@+id/logout"
+            android:icon="@drawable/logout_icon"
             android:title="Logout" />
     </group>
 </menu>
