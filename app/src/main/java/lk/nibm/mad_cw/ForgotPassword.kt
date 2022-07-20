@@ -32,7 +32,7 @@ class ForgotPassword : AppCompatActivity() {
     }
 
     private fun resetPassword(){
-        var email : String = txtEmail.text.toString()
+        val email : String = txtEmail.text.toString()
 
         if(email.isEmpty()){
             txtEmail.setError("Email is required")

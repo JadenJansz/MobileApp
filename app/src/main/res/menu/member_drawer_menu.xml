@@ -20,6 +20,10 @@
             android:icon="@drawable/search_icon"
             android:title="Search Exercises" />
         <item
+            android:id="@+id/notice"
+            android:icon="@drawable/search_icon"
+            android:title="View Notices" />
+        <item
             android:id="@+id/payment"
             android:icon="@drawable/payment_icon"
             android:title="Do Payment" />

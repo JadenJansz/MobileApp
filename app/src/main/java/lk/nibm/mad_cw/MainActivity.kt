@@ -15,7 +15,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.getValue
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -62,34 +61,34 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.lbl_forgotPassword -> {
-                var forPass = Intent(this, ForgotPassword::class.java)
+                val forPass = Intent(this, ForgotPassword::class.java)
                 startActivity(forPass)
             }
         }
     }
 
     private fun userLogin(){
-        var email : String = txtUsername.text.toString().trim()
-        var password : String = txtPassword.text.toString().trim()
+        val email : String = txtUsername.text.toString().trim()
+        val password : String = txtPassword.text.toString().trim()
 
         if(email.isEmpty()){
-            txtUsername.setError("Email is required")
+            txtUsername.error = "Email is required"
             txtUsername.requestFocus()
             return
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            txtUsername.setError("Invalid Email")
+            txtUsername.error = "Invalid Email"
             txtUsername.requestFocus()
             return
         }
         if(password.length < 6){
-            txtPassword!!.setError("Password should be more than 6 characters")
-            txtPassword!!.requestFocus()
+            txtPassword.error = "Password should be more than 6 characters"
+            txtPassword.requestFocus()
             return
         }
         if(password.isEmpty()){
-            txtPassword!!.setError("Password cannot be empty")
-            txtPassword!!.requestFocus()
+            txtPassword.error = "Password cannot be empty"
+            txtPassword.requestFocus()
             return
         }
         progressBar.setVisibility(View.VISIBLE)
@@ -137,7 +136,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     //this.finish()
 
                                 }
-                                else if(dataSnapshot.child("nic").getValue() != ""){
+                                else if(dataSnapshot.child("nic").value != ""){
                                     Toast.makeText(this, "Please Verify Your Email from your Gmail account", Toast.LENGTH_SHORT).show()
                                     progressBar.setVisibility(View.GONE)
                                 }

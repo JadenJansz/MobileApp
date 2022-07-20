@@ -3,6 +3,7 @@ package lk.nibm.mad_cw
 import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
+import android.view.Window
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 
@@ -13,6 +14,8 @@ class SplashScreen : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        getSupportActionBar()?.hide()
         setContentView(R.layout.activity_splash_screen)
 
         iv_note = findViewById(R.id.iv_note)
