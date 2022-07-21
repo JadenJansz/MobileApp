@@ -2,22 +2,23 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="370dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/card_back"
     android:elevation="15dp"
     android:padding="18dp"
-    android:layout_marginLeft="20dp"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
     android:layout_marginTop="30dp"
-    android:layout_marginBottom="30dp">
+    android:layout_marginBottom="20dp">
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/row_member_avatar"
-        android:layout_width="120dp"
-        android:layout_height="110dp"
-        android:src="@mipmap/profileicon"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
         android:elevation="5dp"
-        android:layout_gravity="center"/>
+        android:src="@mipmap/profileicon" />
 
     <TextView
         android:id="@+id/row_member_name"
@@ -25,21 +26,21 @@
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:layout_toRightOf="@id/row_member_avatar"
+        android:fontFamily="@font/samsungsans_medium"
         android:text="Title"
-        android:textSize="24dp"
         android:textColor="@color/gray"
-        android:fontFamily="@font/samsungsans_medium"/>
+        android:textSize="20dp" />
 
     <TextView
         android:id="@+id/row_member_email"
-        android:layout_width="200dp"
-        android:layout_height="60dp"
+        android:layout_width="238dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="50dp"
         android:layout_toRightOf="@id/row_member_avatar"
         android:fontFamily="@font/samsungsans_regular"
         android:text="Description"
         android:textColor="@color/lightgray"
-        android:textSize="16dp" />
+        android:textSize="14dp" />
 
 </RelativeLayout>

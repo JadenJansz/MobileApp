@@ -21,8 +21,10 @@
         <entry key="..\:/Users/DELL/StudioProjects/MobileApp/app/src/main/res/menu/member_drawer_menu.xml" value="0.1796875" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/button_bg.xml" value="0.129" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/edittext_bg.xml" value="0.1" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/ic_close.xml" value="0.217" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/radius_bg.xml" value="0.1" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/radius_bg2.xml" value="0.1" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/drawable/search_icon.xml" value="0.2455" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_add_member_admin.xml" value="0.1" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_admin_home.xml" value="0.2" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_forgot_password.xml" value="0.259963768115942" />
@@ -34,13 +36,13 @@
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_splash_screen.xml" value="0.2" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_view_member_admin.xml" value="0.2671875" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/activity_view_members_admin.xml" value="0.2671875" />
-        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/add_member_admin.xml" value="0.20697463768115942" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/add_member_admin.xml" value="0.264" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/admin_notice.xml" value="0.24592391304347827" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/chart_viewer.xml" value="0.176" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/display_exercises.xml" value="0.2671875" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/enter_fitness_status.xml" value="0.264" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/my_profile_member.xml" value="0.2" />
-        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/nav_header.xml" value="0.2" />
+        <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/nav_header.xml" value="0.4" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/row_enter_fitness.xml" value="0.264" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/row_members.xml" value="0.2671875" />
         <entry key="..\:/Users/Jaden/AndroidStudioProjects/MADCW2/app/src/main/res/layout/row_notice.xml" value="0.24592391304347827" />

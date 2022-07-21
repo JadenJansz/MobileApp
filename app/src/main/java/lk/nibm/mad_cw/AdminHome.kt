@@ -95,14 +95,23 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         when(item.itemId){
             R.id.add_member -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  AddMemberADMIN()).commit()
+                findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
             }
 
             R.id.view_member -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ViewMembersADMIN()).commit()
+                findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
             }
 
             R.id.notice -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, NoticeADMIN()).commit()
+                findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
             }
 
             R.id.logout -> {

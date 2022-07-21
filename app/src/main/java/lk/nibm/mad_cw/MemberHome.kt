@@ -110,14 +110,23 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
         when(item.itemId){
             R.id.my_profile -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  MyProfileMember()).commit()
+                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
+                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
             }
 
             R.id.track_workout -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  EnterFitnessStatusMEMBER()).commit()
+                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
+                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
             }
 
             R.id.search_exercises -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  SeacrhExercises()).commit()
+                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
+                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
             }
 
             R.id.payment -> {
@@ -128,10 +137,16 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.check_fitness_status -> {
                 val status = Intent(this, GraphViewer::class.java)
                 startActivity(status)
+                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
+                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
             }
 
             R.id.notice -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  ViewNoticeMember()).commit()
+                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
+                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
             }
 
             R.id.logout -> {

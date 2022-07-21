@@ -1,5 +1,6 @@
 package lk.nibm.mad_cw
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.Window
 import android.widget.Button
@@ -7,6 +8,8 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -18,7 +21,8 @@ import org.json.JSONObject
 class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
 
     private lateinit var btnPayment : Button
-    private lateinit var txtAmount : EditText
+    private lateinit var txtAmount : TextInputEditText
+    private lateinit var txtAmountLayout : TextInputLayout
 
     private var email : String = ""
     private var contact : String = ""
@@ -33,6 +37,11 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
         setContentView(R.layout.activity_payment_member)
 
         txtAmount = findViewById(R.id.txt_feeAmount)
+        txtAmount.setOnClickListener(){
+            txtAmountLayout.error = ""
+            txtAmountLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
+        txtAmountLayout = findViewById(R.id.txt_feeAmountLayout)
         getDetails()
 
         btnPayment = findViewById(R.id.btn_payment)
@@ -40,7 +49,8 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
             val amount : String = txtAmount.text.toString().trim()
 
             if (amount.isEmpty()){
-                txtAmount.error = "Amount is required"
+                txtAmountLayout.error = "*amount is required"
+                txtAmountLayout.boxStrokeColor = Color.RED
                 txtAmount.requestFocus()
             }else{
                 makePayment()
@@ -73,7 +83,7 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
             jsonObject.put("description", "Montly Payment")
             jsonObject.put("theme.color","#000000")
             jsonObject.put("currency", "USD")
-            jsonObject.put("amount", "2000")
+            jsonObject.put("amount", txtAmount.toString())
             jsonObject.put("prefill.contact", contact)
             jsonObject.put("prefill.email", email)
 
