@@ -1,6 +1,7 @@
 package lk.nibm.mad_cw
 
 import android.content.Intent
+import android.graphics.Color
 //import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
@@ -10,17 +11,21 @@ import android.view.View
 import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ktx.getValue
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
-    lateinit var txtUsername : EditText
-    lateinit var txtPassword : EditText
+    lateinit var txtUsername : TextInputEditText
+    lateinit var txtUsernameLayout : TextInputLayout
+    lateinit var txtPassword : TextInputEditText
+    lateinit var txtPasswordLayout : TextInputLayout
+
     lateinit var btnLogin : Button
     lateinit var lblForgotPassword: TextView
 
@@ -41,7 +46,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         mAuth = FirebaseAuth.getInstance()
 
         txtUsername = findViewById(R.id.txt_username)
+        txtUsernameLayout = findViewById(R.id.txt_usernameLayout)
+        txtUsername.setOnClickListener(){
+            txtUsernameLayout.error = ""
+            txtUsernameLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
+
         txtPassword = findViewById(R.id.txt_pass)
+        txtPasswordLayout = findViewById(R.id.txt_passLayout)
+        txtPassword.setOnClickListener(){
+            txtPasswordLayout.error = ""
+            txtPasswordLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
 
         lblForgotPassword = findViewById(R.id.lbl_forgotPassword)
         lblForgotPassword.setOnClickListener(this)
@@ -62,36 +78,37 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             }
 
             R.id.lbl_forgotPassword -> {
-                var forPass = Intent(this, ForgotPassword::class.java)
+                val forPass = Intent(this, ForgotPassword::class.java)
                 startActivity(forPass)
             }
         }
     }
 
     private fun userLogin(){
-        var email : String = txtUsername.text.toString().trim()
-        var password : String = txtPassword.text.toString().trim()
+        val email : String = txtUsername.text.toString().trim()
+        val password : String = txtPassword.text.toString().trim()
 
         if(email.isEmpty()){
-            txtUsername.setError("Email is required")
-            txtUsername.requestFocus()
+            txtUsernameLayout.error = "*email is required"
+            txtUsernameLayout.boxStrokeColor = Color.RED
             return
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            txtUsername.setError("Invalid Email")
-            txtUsername.requestFocus()
-            return
-        }
-        if(password.length < 6){
-            txtPassword!!.setError("Password should be more than 6 characters")
-            txtPassword!!.requestFocus()
+            txtUsernameLayout.error = "*invalid email address"
+            txtUsernameLayout.boxStrokeColor = Color.RED
             return
         }
         if(password.isEmpty()){
-            txtPassword!!.setError("Password cannot be empty")
-            txtPassword!!.requestFocus()
+            txtPasswordLayout.error = "*password cannot be empty"
+            txtPasswordLayout.boxStrokeColor = Color.RED
             return
         }
+        if(password.length < 6){
+            txtPasswordLayout.error = "*password should be more than 6 characters"
+            txtPasswordLayout.boxStrokeColor = Color.RED
+            return
+        }
+
         progressBar.setVisibility(View.VISIBLE)
         Log.d("Before", "Listener")
         mAuth.signInWithEmailAndPassword(email, password)
@@ -137,7 +154,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     //this.finish()
 
                                 }
-                                else if(dataSnapshot.child("nic").getValue() != ""){
+                                else if(dataSnapshot.child("nic").value != ""){
                                     Toast.makeText(this, "Please Verify Your Email from your Gmail account", Toast.LENGTH_SHORT).show()
                                     progressBar.setVisibility(View.GONE)
                                 }

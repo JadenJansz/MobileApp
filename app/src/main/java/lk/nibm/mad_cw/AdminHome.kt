@@ -42,14 +42,14 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         getSupportActionBar()?.hide()
         setContentView(R.layout.activity_admin_home)
 
-        var toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
+        val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 
         drawer = findViewById(R.id.drawer_layout)
-        var navigationView : NavigationView = findViewById(R.id.nav_view)
+        val navigationView : NavigationView = findViewById(R.id.nav_view)
         navigationView.setNavigationItemSelectedListener(this)
 
-        var toggle = ActionBarDrawerToggle(this, drawer, toolbar,
+        val toggle = ActionBarDrawerToggle(this, drawer, toolbar,
             R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
@@ -95,14 +95,23 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         when(item.itemId){
             R.id.add_member -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  AddMemberADMIN()).commit()
+                findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
             }
 
             R.id.view_member -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ViewMembersADMIN()).commit()
+                findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
             }
 
             R.id.notice -> {
                 supportFragmentManager.beginTransaction().replace(R.id.fragment_container, NoticeADMIN()).commit()
+                findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
             }
 
             R.id.logout -> {

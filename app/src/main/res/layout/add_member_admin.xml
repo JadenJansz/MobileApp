@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent">
 
     <ImageView
@@ -19,7 +20,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bac_add"
-        android:layout_width="350dp"
+        android:layout_width="335dp"
         android:layout_height="350dp"
         android:background="@drawable/card_back"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,40 +29,58 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
+        app:layout_constraintVertical_bias="0.5" >
 
-    <TextView
-        android:id="@+id/lbl_add"
-        android:layout_width="200dp"
-        android:layout_height="52dp"
-        android:fontFamily="sans-serif-black"
-        android:text="Add Member"
-        android:textColor="@color/lightblue001"
-        android:textSize="32dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.37" />
+        <TextView
+            android:id="@+id/lbl_add"
+            android:layout_width="151dp"
+            android:layout_height="60dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Add User"
+            android:textColor="@color/lightblue001"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.098" />
 
-    <EditText
-        android:id="@+id/txt_memEmail"
-        android:layout_width="300dp"
-        android:layout_height="48dp"
-        android:ems="10"
-        android:background="@drawable/edittext_bg"
-        android:paddingLeft="20dp"
-        android:hint="Member Email"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5"
-        android:elevation="15dp"
-        android:layout_gravity="center"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_memEmailLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="303dp"
+            android:layout_height="84dp"
+            android:hint="E-mail"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/purple_200"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.33">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_memEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/samsungsans_regular"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="251dp"
+            android:layout_height="43dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.505"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.557" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
         android:id="@+id/btn_addMember"

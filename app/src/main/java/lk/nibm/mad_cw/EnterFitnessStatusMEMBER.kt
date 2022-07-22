@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.content.DialogInterface
 import android.database.Cursor
 import android.database.SQLException
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
@@ -20,8 +23,10 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
     lateinit var drop : Button
     lateinit var btnAddExercise : Button
     lateinit var btnSubmitExercise : Button
-    lateinit var dateText : TextView
-    lateinit var weekText : TextView
+    lateinit var dateText : TextInputEditText
+    lateinit var dateTextLayout : TextInputLayout
+    lateinit var weekText : TextInputEditText
+    lateinit var weekTextLayout : TextInputLayout
     lateinit var layoutList : LinearLayout
     private lateinit var progressBar : ProgressBar
     lateinit var lblLastUpdated : TextView
@@ -43,7 +48,10 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
         layoutList = view.findViewById(R.id.layout_list)
         progressBar = view.findViewById(R.id.progressBar)
+
         weekText = view.findViewById(R.id.txt_week)
+        weekTextLayout = view.findViewById(R.id.txt_weekLayout)
+
         lblLastUpdated = view.findViewById(R.id.lbl_lastUpdated)
 
         btnAddExercise = view.findViewById(R.id.btn_addExercise)
@@ -59,7 +67,9 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
         }
 
         dateText = view.findViewById(R.id.txt_date)
+        dateTextLayout = view.findViewById(R.id.txt_dateLayout)
         dateText.setOnClickListener(this)
+        dateTextLayout.setOnClickListener(this)
 
 
 //        dateText.text = calenderInstance.get(Calendar.DAY_OF_MONTH).toString() + " - " + calenderInstance.get(Calendar.MONTH).toString() + " - " + calenderInstance.get(Calendar.YEAR).toString()
@@ -80,6 +90,14 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
             R.id.txt_date -> {
                 showDatePickerDialog()
+                dateTextLayout.error = ""
+                dateTextLayout.boxStrokeColor = Color.rgb(213,128,255)
+            }
+
+            R.id.txt_dateLayout -> {
+                showDatePickerDialog()
+                dateTextLayout.error = ""
+                dateTextLayout.boxStrokeColor = Color.rgb(213,128,255)
             }
         }
 
@@ -90,12 +108,12 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
         val month = calenderInstance.get(Calendar.MONTH)
         val day = calenderInstance.get(Calendar.DAY_OF_MONTH)
 
-        dateText.text = "$day-$month-$year"
+        dateText.setText("$day-$month-$year")
 
         val datePicker = context?.let {
             DatePickerDialog(it,DatePickerDialog.OnDateSetListener{
                 view, year, month, day ->
-                dateText.text = "$day-$month-$year"
+                dateText.setText("$day-$month-$year")
             }, year, month, day)
         }
 
@@ -110,15 +128,42 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
         for(i in 0 until layoutList.childCount){
             val exerciseView : View = layoutList.getChildAt(i)
 
-            val editTextName : EditText = exerciseView.findViewById(R.id.fitness_name)
-            val editTextWeight : EditText = exerciseView.findViewById(R.id.txt_date)
+            val editTextName : TextInputEditText = exerciseView.findViewById(R.id.fitness_name)
+            val editTextNameLayout : TextInputLayout = exerciseView.findViewById(R.id.fitness_nameLayout)
 
+            val editTextWeight : TextInputEditText = exerciseView.findViewById(R.id.txt_date)
+            val editTextWeightLayout : TextInputLayout = exerciseView.findViewById(R.id.txt_dateLayout)
+
+            if(dateText.text.toString() == ""){
+
+                dateTextLayout.error = "*required"
+                dateTextLayout.boxStrokeColor = Color.RED
+                return false
+            }
+            else if(weekText.text.toString() == ""){
+                weekTextLayout.error = "*required"
+                weekTextLayout.boxStrokeColor = Color.RED
+                return false
+            }
+            else if(editTextName.text.toString() == ""){
+                editTextNameLayout.error = "*required"
+                editTextNameLayout.boxStrokeColor = Color.RED
+                return false
+            }
+            else if(editTextWeight.text.toString() == ""){
+                editTextWeightLayout.error = "*required"
+                editTextWeightLayout.boxStrokeColor = Color.RED
+                return false
+            }
             if(editTextName.text.toString() != "" && editTextWeight.text.toString() != "" && dateText.text.toString() != "" && weekText.text.toString() != ""){
                 exercise = Exercises(editTextName.text.toString(), editTextWeight.text.toString().toDouble(), dateText.text.toString(), weekText.text.toString())
             }
             else{
                 result = false
-                Toast.makeText(context, "Enter Details Completely", Toast.LENGTH_SHORT).show()
+//                Toast.makeText(context, "Enter Details Completely", Toast.LENGTH_SHORT).show()
+//                editTextNameLayout.error = "*cannot be empty"
+//                editTextNameLayout.boxStrokeColor = Color.RED
+//                editTextName.requestFocus()
                 break
             }
 
@@ -139,8 +184,8 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
     private fun addElement(name : String, weight : String) {
         val exercise : View = layoutInflater.inflate(R.layout.row_enter_fitness, null, false)
 
-        val fitnessName : EditText = exercise.findViewById(R.id.fitness_name)
-        val fitnessWeight : EditText = exercise.findViewById(R.id.txt_date)
+        val fitnessName : TextInputEditText = exercise.findViewById(R.id.fitness_name)
+        val fitnessWeight : TextInputEditText = exercise.findViewById(R.id.txt_date)
         val fitnessRemove : ImageView = exercise.findViewById(R.id.image_remove)
 
         fitnessName.setText(name)
@@ -193,6 +238,8 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
                         currentWeek += 1
                     }else{
                         Toast.makeText(context, "This week is already added", Toast.LENGTH_SHORT).show()
+                        weekTextLayout.boxStrokeColor = Color.RED
+                        weekTextLayout.error = ""
                     }
                 }
             }
@@ -201,6 +248,8 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
             }
             else{
                 Toast.makeText(context, "This week is already added", Toast.LENGTH_SHORT).show()
+                weekTextLayout.boxStrokeColor = Color.RED
+                weekTextLayout.error = ""
 
             }
 
@@ -227,8 +276,8 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
             if (res != null && res.moveToFirst()) {
                 do {
                     addElement(res.getString(0), res.getString(3))
-                    lblLastUpdated.text = "Last Updated Date " + res.getString(1).toString()
-                    weekText.text = res.getString(2).toString()
+                    lblLastUpdated.text = "Last Updated Date : " + res.getString(1).toString()
+                    weekText.setText(res.getString(2).toString())
                     currentWeek = res.getString(2).toString().toInt()
                 }while (res.moveToNext())
             }

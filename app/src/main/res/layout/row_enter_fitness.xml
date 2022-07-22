@@ -2,42 +2,68 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:orientation="horizontal"
     android:paddingTop="5dp"
     android:paddingBottom="5dp">
 
-    <EditText
-        android:id="@+id/fitness_name"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="5dp"
-        android:layout_weight="1"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/fitness_nameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="189dp"
+        android:layout_height="75dp"
+        android:layout_marginLeft="20dp"
         android:hint="Exercise Name"
-        android:textSize="14sp"
         android:textColor="@color/black"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"/>
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fitness_name"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="text"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <FrameLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/txt_date"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="5dp"
-            android:hint="Weight (kg)"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_dateLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="90dp"
+            android:layout_height="75dp"
+            android:layout_marginLeft="20dp"
+            android:hint="Weight"
             android:textColor="@color/black"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"/>
-    </FrameLayout>
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/purple_200">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_date"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:fontFamily="@font/samsungsans_regular"
+                android:inputType="text"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+
+    </FrameLayout>
     <ImageView
         android:id="@+id/image_remove"
         android:layout_width="25dp"
         android:layout_height="25dp"
         android:layout_gravity="center_vertical"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:src="@drawable/ic_close">
+        android:layout_marginBottom="7dp"
+        app:srcCompat="@drawable/ic_close">
     </ImageView>
+
 </LinearLayout>

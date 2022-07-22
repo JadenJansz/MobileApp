@@ -1,5 +1,6 @@
 package lk.nibm.mad_cw
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -17,8 +20,10 @@ import java.util.*
 
 class NoticeADMIN : Fragment() {
 
-    private lateinit var txtSubject : EditText
-    private lateinit var txtMessage : EditText
+    private lateinit var txtSubject : TextInputEditText
+    private lateinit var txtSubjectLayout : TextInputLayout
+    private lateinit var txtMessage : TextInputEditText
+    private lateinit var txtMessageLayout : TextInputLayout
     private lateinit var btnSendMessage : Button
 
     private lateinit var progressBar : ProgressBar
@@ -35,7 +40,19 @@ class NoticeADMIN : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         txtSubject = view.findViewById(R.id.txt_subject)
+        txtSubject.setOnClickListener(){
+            txtSubjectLayout.error = ""
+            txtSubjectLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
+        txtSubjectLayout = view.findViewById(R.id.txt_subjectLayout)
+
         txtMessage = view.findViewById(R.id.txt_message)
+        txtMessage.setOnClickListener(){
+            txtMessageLayout.error = ""
+            txtMessageLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
+        txtMessageLayout = view.findViewById(R.id.txt_messageLayout)
+
         progressBar = view.findViewById(R.id.progressBar)
 
         btnSendMessage = view.findViewById(R.id.btn_sendMessage)
@@ -49,13 +66,15 @@ class NoticeADMIN : Fragment() {
         val message = txtMessage.text.toString()
 
         if (subject.isEmpty()){
-            txtSubject.setError("Full Name is required")
+            txtSubjectLayout.error = "*subject is required"
+            txtSubjectLayout.boxStrokeColor = Color.RED
             txtSubject.requestFocus()
             return
         }
 
         if(message.isEmpty()){
-            txtMessage.setError("Full Name is required")
+            txtMessageLayout.error = "*subject is required"
+            txtMessageLayout.boxStrokeColor = Color.RED
             txtMessage.requestFocus()
             return
         }

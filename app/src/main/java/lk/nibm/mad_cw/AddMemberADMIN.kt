@@ -1,6 +1,7 @@
 package lk.nibm.mad_cw
 
 import android.content.ContentValues
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.util.Patterns
@@ -9,13 +10,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 
 
 class AddMemberADMIN :  Fragment() {
 
-    private lateinit var memEmail : EditText
+    private lateinit var memEmail : TextInputEditText
+    private lateinit var memEmailLayout : TextInputLayout
     private lateinit var btnAddMem : Button
     private lateinit var spinner : Spinner
     private lateinit var progressBar : ProgressBar
@@ -32,6 +36,12 @@ class AddMemberADMIN :  Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         memEmail = view.findViewById(R.id.txt_memEmail)
+        memEmail.setOnClickListener(){
+            memEmailLayout.error = ""
+            memEmailLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
+        memEmailLayout = view.findViewById(R.id.txt_memEmailLayout)
+
         btnAddMem = view.findViewById(R.id.btn_addMember)
         progressBar = view.findViewById(R.id.progressBar)
         spinner = view.findViewById(R.id.spinner)
@@ -80,12 +90,14 @@ class AddMemberADMIN :  Fragment() {
             "ADMIN"
         }
         if(email.isEmpty()){
-            memEmail.error = "Email is required"
+            memEmailLayout.error = "*email is required"
+            memEmailLayout.boxStrokeColor = Color.RED
             memEmail.requestFocus()
             return
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
-            memEmail.error = "Invalid Email"
+            memEmailLayout.error = "*invalid email"
+            memEmailLayout.boxStrokeColor = Color.RED
             memEmail.requestFocus()
             return
         }
