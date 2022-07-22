@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
                 android:fontFamily="@font/samsungsans_regular"
-                android:inputType="text"
+                android:inputType="numberDecimal"
                 android:maxLines="1"
                 android:textColor="@color/black" />
         </com.google.android.material.textfield.TextInputLayout>

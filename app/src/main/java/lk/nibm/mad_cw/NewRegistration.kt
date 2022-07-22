@@ -7,6 +7,7 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.content.ContentValues.TAG
 import android.content.Intent
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -17,6 +18,8 @@ import android.widget.*
 import androidx.annotation.NonNull
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -38,14 +41,23 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
     private var age : Int = 0
 
     private lateinit var avatar : ImageView
-    private lateinit var txtFname : EditText
-    private lateinit var txtLname : EditText
-    private lateinit var txtNIC : EditText
-    private lateinit var txtDob : TextView
-    private lateinit var txtContact : EditText
-    private lateinit var txtEmergency : EditText
-    private var txtPassword : EditText? = null
-    private var txtConfirmPassword : EditText? = null
+    private lateinit var txtFname : TextInputEditText
+    private lateinit var txtFnameLayout : TextInputLayout
+    private lateinit var txtLname : TextInputEditText
+    private lateinit var txtLnameLayout : TextInputLayout
+    private lateinit var txtNIC : TextInputEditText
+    private lateinit var txtNICLayout : TextInputLayout
+    private lateinit var txtDob : TextInputEditText
+    private lateinit var txtDobLayout : TextInputLayout
+    private lateinit var imgCalender : ImageView
+    private lateinit var txtContact : TextInputEditText
+    private lateinit var txtContactLayout : TextInputLayout
+    private lateinit var txtEmergency : TextInputEditText
+    private lateinit var txtEmergencyLayout : TextInputLayout
+    private var txtPassword : TextInputEditText? = null
+    private lateinit var txtPasswordLayout : TextInputLayout
+    private var txtConfirmPassword : TextInputEditText? = null
+    private lateinit var txtConfirmPasswordLayout : TextInputLayout
     private lateinit var progressBar : ProgressBar
 
     private lateinit var mAuth : FirebaseAuth
@@ -73,16 +85,42 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
         avatar.setOnClickListener(this)
 
         txtDob = findViewById(R.id.txt_dob)
-        txtDob.setOnClickListener(this)
+        txtDobLayout = findViewById(R.id.txt_dobLayout)
+        imgCalender = findViewById(R.id.image_dob)
+        txtDobLayout.setOnClickListener(this)
+        imgCalender.setOnClickListener(this)
 
         txtFname = findViewById(R.id.txt_fname)
+        txtFnameLayout = findViewById(R.id.txt_fnameLayout)
         txtLname = findViewById(R.id.txt_lname)
+        txtLnameLayout = findViewById(R.id.txt_lnameLayout)
         txtNIC = findViewById(R.id.txt_nic)
+        txtNICLayout = findViewById(R.id.txt_nicLayout)
         txtContact = findViewById(R.id.txt_contact)
+        txtContactLayout = findViewById(R.id.txt_contactLayout)
         txtEmergency = findViewById(R.id.txt_emergency_contact)
+        txtEmergencyLayout = findViewById(R.id.txt_emergency_contactLayout)
         txtPassword = findViewById(R.id.txt_password)
+        txtPasswordLayout = findViewById(R.id.txt_passwordLayout)
         txtConfirmPassword = findViewById(R.id.txt_confpass)
+        txtConfirmPasswordLayout = findViewById(R.id.txt_confpassLayout)
 
+
+        val layoutArray : Map<TextInputLayout, TextInputEditText> = mapOf<TextInputLayout, TextInputEditText>(txtFnameLayout to txtFname,
+            txtLnameLayout to txtLname,
+            txtNICLayout to txtNIC,
+            txtDobLayout to txtDob,
+            txtContactLayout to txtContact,
+            txtEmergencyLayout to txtEmergency,
+            (txtPasswordLayout to txtPassword!!),
+            txtConfirmPasswordLayout to txtConfirmPassword!! )
+
+        for (i in layoutArray.keys){
+            layoutArray.get(i)!!.setOnClickListener(){
+                i.error = ""
+                i.boxStrokeColor = Color.rgb(213,128,255)
+            }
+        }
 
         progressBar = findViewById(R.id.progressBar)
 
@@ -99,8 +137,10 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
                 saveProfilePic()
             }
 
-            R.id.txt_dob -> {
+            R.id.txt_dobLayout, R.id.image_dob -> {
                 showDatePickerDialog()
+                txtDobLayout.error = ""
+                txtDobLayout.boxStrokeColor = Color.rgb(213,128,255)
             }
         }
     }
@@ -202,52 +242,61 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
 
         age = Calendar.getInstance().get(Calendar.YEAR) - dob.get(Calendar.YEAR)
         if (fname.isEmpty()){
-            txtFname.setError("Full Name is required")
+            txtFnameLayout.error = "*name is required"
+            txtFnameLayout.boxStrokeColor = Color.RED
             txtFname.requestFocus()
             return
         }
 
         if(lname.isEmpty()){
-            txtLname.setError("Full Name is required")
+            txtLnameLayout.error = "*name is required"
+            txtLnameLayout.boxStrokeColor = Color.RED
             txtLname.requestFocus()
             return
         }
 
         if(nic.isEmpty()){
-            txtNIC.setError("NIC is required")
+            txtNICLayout.error = "*nic is required"
+            txtNICLayout.boxStrokeColor = Color.RED
             txtNIC.requestFocus()
             return
         }
-        if(nic.length < 12){
-            txtNIC.setError("Invalid NIC")
+        if(nic.length < 10 || nic.length > 12) {
+            txtNICLayout.error = "*invalid nic"
+            txtNICLayout.boxStrokeColor = Color.RED
             txtNIC.requestFocus()
             return
         }
 
         if(dobText.isEmpty()){
-            txtDob.setError("DOB is required")
+            txtDobLayout.error = "*DOB is required"
+            txtDobLayout.boxStrokeColor = Color.RED
             txtDob.requestFocus()
             return
         }
 
         if(contact.isEmpty()){
-            txtContact.setError("Contact number is required")
+            txtContactLayout.error = "*contact number is required"
+            txtContactLayout.boxStrokeColor = Color.RED
             txtContact.requestFocus()
             return
         }
         if(contact.length < 10){
-            txtContact.setError("Invalid Contact number")
+            txtContactLayout.error = "*invalid contact number"
+            txtContactLayout.boxStrokeColor = Color.RED
             txtContact.requestFocus()
             return
         }
 
         if(emergencyContact.isEmpty()){
-            txtEmergency.setError("Contact number is required")
+            txtEmergencyLayout.error = "*contact number is required"
+            txtEmergencyLayout.boxStrokeColor = Color.RED
             txtEmergency.requestFocus()
             return
         }
         if(emergencyContact.length < 10){
-            txtEmergency.setError("Invalid Contact number")
+            txtEmergencyLayout.error = "*invalid contact number"
+            txtEmergencyLayout.boxStrokeColor = Color.RED
             txtEmergency.requestFocus()
             return
         }
@@ -258,17 +307,20 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
             return
         }
         if(password.isEmpty()){
-            txtPassword!!.setError("Password cannot be empty")
+            txtPasswordLayout.error = "*password cannot be empty"
+            txtPasswordLayout.boxStrokeColor = Color.RED
             txtPassword!!.requestFocus()
             return
         }
         if(conPassword.isEmpty()){
-            txtConfirmPassword!!.setError("Cannot be empty")
+            txtConfirmPasswordLayout.error = "*required"
+            txtConfirmPasswordLayout.boxStrokeColor = Color.RED
             txtConfirmPassword!!.requestFocus()
             return
         }
         else if (conPassword != password){
-            txtConfirmPassword!!.setError("Passwords do not match")
+            txtConfirmPasswordLayout.error = "*passwords do not match"
+            txtConfirmPasswordLayout.boxStrokeColor = Color.RED
             txtConfirmPassword!!.requestFocus()
             return
         }

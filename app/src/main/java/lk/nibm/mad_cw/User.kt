@@ -6,7 +6,7 @@ import androidx.annotation.NonNull
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 
-class User(uid: String,dob : String,age:String,fname: String, lname: String, email: String, nic : String, contact : String, emergency : String, role : String) {
+class User(uid: String,dob : String,age:String,fname: String, lname: String, email: String, nic : String, contact : String, emergency : String, role : String, profileImage : String) {
 
      var uid : String
      var dob : String
@@ -18,6 +18,7 @@ class User(uid: String,dob : String,age:String,fname: String, lname: String, ema
      var nic : String
      var contact : String
      var emergency : String
+     var profileImage : String
 
     init {
         this.uid = uid
@@ -30,6 +31,7 @@ class User(uid: String,dob : String,age:String,fname: String, lname: String, ema
         this.contact = contact
         this.emergency = emergency
         this.role = role
+        this.profileImage = profileImage
     }
 
 

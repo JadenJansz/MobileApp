@@ -3,6 +3,7 @@ package lk.nibm.mad_cw
 import android.app.Activity
 import android.content.Intent
 import android.graphics.BitmapFactory
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +12,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -22,11 +25,16 @@ import java.io.File
 class MyProfileMember :  Fragment(), View.OnClickListener {
 
     private lateinit var avatar : ImageView
-    private lateinit var txtFname : EditText
-    private lateinit var txtLname : EditText
-    private lateinit var txtNIC : EditText
-    private lateinit var txtContact : EditText
-    private lateinit var txtEmergency : EditText
+    private lateinit var txtFname : TextInputEditText
+    private lateinit var txtFnameLayout : TextInputLayout
+    private lateinit var txtLname : TextInputEditText
+    private lateinit var txtLnameLayout : TextInputLayout
+    private lateinit var txtNIC : TextInputEditText
+    private lateinit var txtNICLayout : TextInputLayout
+    private lateinit var txtContact : TextInputEditText
+    private lateinit var txtContactLayout : TextInputLayout
+    private lateinit var txtEmergency : TextInputEditText
+    private lateinit var txtEmergencyLayout : TextInputLayout
     private lateinit var btnMyProfile : Button
     private lateinit var progressBar : ProgressBar
 
@@ -52,15 +60,34 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         avatar = view.findViewById(R.id.avatar_viewMember)
         avatar.setOnClickListener(this)
 
-        txtFname = view.findViewById(R.id.txt_)
-        txtLname = view.findViewById(R.id.txt_email_viewMemberADMIN)
+        txtFname = view.findViewById(R.id.txt_fnameviewMemberADMIN)
+        txtLname = view.findViewById(R.id.txt_lname_viewMemberADMIN)
         txtNIC = view.findViewById(R.id.txt_nic_viewMemberADMIN)
         txtContact = view.findViewById(R.id.txt_contact_viewMemberADMIN)
         txtEmergency = view.findViewById(R.id.txt_emergency_viewMemberADMIN)
+
+        txtFnameLayout = view.findViewById(R.id.txt_fnameviewMemberADMINLayout)
+        txtLnameLayout = view.findViewById(R.id.txt_lname_viewMemberADMINLayout)
+        txtNICLayout = view.findViewById(R.id.txt_nic_viewMemberADMINLayout)
+        txtContactLayout = view.findViewById(R.id.txt_contact_viewMemberADMINLayout)
+        txtEmergencyLayout = view.findViewById(R.id.txt_emergency_viewMemberADMINLayout)
         progressBar = view.findViewById(R.id.progressBar)
 
         btnMyProfile = view.findViewById(R.id.btn_viewMemberADMIN)
         btnMyProfile.setOnClickListener(this)
+
+        val layoutArray : Map<TextInputLayout, TextInputEditText> = mapOf<TextInputLayout, TextInputEditText>(txtFnameLayout to txtFname,
+            txtLnameLayout to txtLname,
+            txtNICLayout to txtNIC,
+            txtContactLayout to txtContact,
+            txtEmergencyLayout to txtEmergency )
+
+        for (i in layoutArray.keys){
+            layoutArray.get(i)!!.setOnClickListener(){
+                i.error = ""
+                i.boxStrokeColor = Color.rgb(213,128,255)
+            }
+        }
 
         storageReference = FirebaseStorage.getInstance().reference.child("Profile Images/"+mAuth.currentUser!!.uid+".jpg")
         val localfile = File.createTempFile("tempImage", "jpg")
@@ -106,16 +133,21 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == CODE_IMAGE_GALLERY && resultCode == Activity.RESULT_OK) {
-            val imageUri = data!!.data
-            imageUri?.let { startCrop(it) }
-        } else if (requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK) {
-            val imageUriResultCrop = UCrop.getOutput(data!!)
-            if (imageUriResultCrop != null) {
-                avatar.setImageURI(imageUriResultCrop)
-                uploadImageToFirebase(imageUriResultCrop)
+        try {
+            if (requestCode == CODE_IMAGE_GALLERY && resultCode == Activity.RESULT_OK) {
+                val imageUri = data!!.data
+                imageUri?.let { startCrop(it) }
+            } else if (requestCode == UCrop.REQUEST_CROP && resultCode == Activity.RESULT_OK) {
+                val imageUriResultCrop = UCrop.getOutput(data!!)
+                if (imageUriResultCrop != null) {
+                    avatar.setImageURI(imageUriResultCrop)
+                    uploadImageToFirebase(imageUriResultCrop)
+                }
             }
+        }catch (e: Exception) {
+            e.printStackTrace()
         }
+
     }
 
     private fun startCrop(uri: Uri) {
@@ -173,46 +205,55 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         val emergencyContact : String = txtEmergency.text.toString()
 
         if (fname.isEmpty()){
-            txtFname.setError("Full Name is required")
+            txtFnameLayout.error = "*name is required"
+            txtFnameLayout.boxStrokeColor = Color.RED
             txtFname.requestFocus()
             return
         }
 
         if(lname.isEmpty()){
-            txtLname.setError("Full Name is required")
+            txtLnameLayout.error = "*name is required"
+            txtLnameLayout.boxStrokeColor = Color.RED
             txtLname.requestFocus()
             return
         }
 
         if(nic.isEmpty()){
-            txtNIC.setError("NIC is required")
+            txtNICLayout.error = "*nic is required"
+            txtNICLayout.boxStrokeColor = Color.RED
             txtNIC.requestFocus()
             return
         }
-        if(nic.length < 12){
-            txtNIC.setError("Invalid NIC")
+        if(nic.length < 10 || nic.length > 12) {
+            txtNICLayout.error = "*invalid nic"
+            txtNICLayout.boxStrokeColor = Color.RED
             txtNIC.requestFocus()
             return
         }
 
+
         if(contact.isEmpty()){
-            txtContact.setError("Contact number is required")
+            txtContactLayout.error = "*contact number is required"
+            txtContactLayout.boxStrokeColor = Color.RED
             txtContact.requestFocus()
             return
         }
         if(contact.length < 10){
-            txtContact.setError("Invalid Contact number")
+            txtContactLayout.error = "*invalid contact number"
+            txtContactLayout.boxStrokeColor = Color.RED
             txtContact.requestFocus()
             return
         }
 
         if(emergencyContact.isEmpty()){
-            txtEmergency.setError("Contact number is required")
+            txtEmergencyLayout.error = "*contact number is required"
+            txtEmergencyLayout.boxStrokeColor = Color.RED
             txtEmergency.requestFocus()
             return
         }
         if(emergencyContact.length < 10){
-            txtEmergency.setError("Invalid Contact number")
+            txtEmergencyLayout.error = "*invalid contact number"
+            txtEmergencyLayout.boxStrokeColor = Color.RED
             txtEmergency.requestFocus()
             return
         }

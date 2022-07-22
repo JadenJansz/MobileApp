@@ -4,6 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:fillViewport="true">
 
     <ImageView
@@ -30,6 +31,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.5">
 
+
         <TextView
             android:id="@+id/lbl_myacc"
             android:layout_width="wrap_content"
@@ -40,133 +42,173 @@
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.04" />
+            app:layout_constraintVertical_bias="0.011" />
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/avatar_viewMember"
-            android:layout_width="175dp"
-            android:layout_height="145dp"
+            android:layout_width="171dp"
+            android:layout_height="134dp"
+            android:layout_gravity="center"
+            android:elevation="10dp"
+            android:src="@mipmap/profileicon"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.15"
-            android:src="@mipmap/profileicon"
-            android:elevation="10dp"
-            android:layout_gravity="center"/>
+            app:layout_constraintVertical_bias="0.11" />
 
-        <EditText
-            android:id="@+id/txt_"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="245dp"
-            android:drawableStart="@drawable/profile_icon"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"
-            android:ems="10"
-            android:inputType="textPersonName"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_fnameviewMemberADMINLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="284dp"
+            android:layout_height="77dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="204dp"
+            android:hint="First Name"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/purple_200"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.197"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/txt_contact_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="385dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:drawableStart="@drawable/payment_icon"
-            android:paddingLeft="10dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"
-            android:ems="10"
-            android:inputType="textPersonName"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_fnameviewMemberADMIN"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:fontFamily="@font/samsungsans_regular"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_lname_viewMemberADMINLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="291dp"
+            android:layout_height="77dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="288dp"
+            android:hint="Last Name"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/purple_200"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.216"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/txt_emergency_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="455dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:drawableStart="@drawable/search_icon"
-            android:paddingLeft="10dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"
-            android:ems="10"
-            android:inputType="textPersonName"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_lname_viewMemberADMIN"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:fontFamily="@font/samsungsans_regular"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_contact_viewMemberADMINLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="291dp"
+            android:layout_height="77dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="456dp"
+            android:hint="Contact Number"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/purple_200"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:counterTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.216"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_contact_viewMemberADMIN"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:fontFamily="@font/samsungsans_regular"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <EditText
-            android:id="@+id/txt_nic_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="525dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:drawableStart="@drawable/logout_icon"
-            android:paddingLeft="10dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"
-            android:ems="10"
-            android:inputType="textPersonName"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_emergency_viewMemberADMINLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="291dp"
+            android:layout_height="79dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="536dp"
+            android:hint="Emergency Contact Number"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/purple_200"
+            app:counterEnabled="true"
+            app:counterMaxLength="10"
+            app:counterTextColor="@color/black"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.216"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <EditText
-            android:id="@+id/txt_email_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="315dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="18dp"
-            android:drawableStart="@drawable/check_icon"
-            android:paddingLeft="10dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"
-            android:ems="10"
-            android:inputType="textPersonName"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_emergency_viewMemberADMIN"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/samsungsans_regular"
+                android:inputType="phone"
+                android:maxLength="10"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/txt_nic_viewMemberADMINLayout"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="291dp"
+            android:layout_height="77dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="372dp"
+            android:hint="NIC"
+            android:textColor="@color/black"
+            android:textColorHint="#999999"
+            app:boxStrokeColor="@color/purple_200"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.216"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_nic_viewMemberADMIN"
+                android:layout_width="match_parent"
+                android:layout_height="51dp"
+                android:fontFamily="@font/samsungsans_regular"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:textColor="@color/black" />
+        </com.google.android.material.textfield.TextInputLayout>
 
         <Button
             android:id="@+id/btn_viewMemberADMIN"
             android:layout_width="145dp"
             android:layout_height="46dp"
-            android:layout_marginTop="610dp"
+            android:layout_marginTop="623dp"
+            android:background="@drawable/button_bg"
+            android:fontFamily="@font/samsungsans_medium"
             android:text="Button"
             android:textColor="@color/white"
             android:textSize="15dp"
-            android:fontFamily="@font/samsungsans_medium"
-            android:background="@drawable/button_bg"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.54"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

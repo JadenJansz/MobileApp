@@ -162,7 +162,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                         }
 
 
-//                        user.sendEmailVerification()
+                        user.sendEmailVerification()
                         Toast.makeText(this, "Check Your Email", Toast.LENGTH_SHORT).show()
                         progressBar.setVisibility(View.GONE)
                     }

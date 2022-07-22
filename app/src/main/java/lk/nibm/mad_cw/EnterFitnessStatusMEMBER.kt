@@ -27,6 +27,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
     lateinit var dateTextLayout : TextInputLayout
     lateinit var weekText : TextInputEditText
     lateinit var weekTextLayout : TextInputLayout
+    lateinit var imageDate : ImageView
     lateinit var layoutList : LinearLayout
     private lateinit var progressBar : ProgressBar
     lateinit var lblLastUpdated : TextView
@@ -51,6 +52,10 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
         weekText = view.findViewById(R.id.txt_week)
         weekTextLayout = view.findViewById(R.id.txt_weekLayout)
+        weekText.setOnClickListener(){
+            weekTextLayout.error = ""
+            weekTextLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
 
         lblLastUpdated = view.findViewById(R.id.lbl_lastUpdated)
 
@@ -68,6 +73,8 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
         dateText = view.findViewById(R.id.txt_date)
         dateTextLayout = view.findViewById(R.id.txt_dateLayout)
+        imageDate = view.findViewById(R.id.image_date)
+        imageDate.setOnClickListener(this)
         dateText.setOnClickListener(this)
         dateTextLayout.setOnClickListener(this)
 
@@ -88,13 +95,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
                 }
             }
 
-            R.id.txt_date -> {
-                showDatePickerDialog()
-                dateTextLayout.error = ""
-                dateTextLayout.boxStrokeColor = Color.rgb(213,128,255)
-            }
-
-            R.id.txt_dateLayout -> {
+            R.id.txt_date, R.id.txt_dateLayout, R.id.image_date -> {
                 showDatePickerDialog()
                 dateTextLayout.error = ""
                 dateTextLayout.boxStrokeColor = Color.rgb(213,128,255)

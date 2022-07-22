@@ -1,5 +1,6 @@
 package lk.nibm.mad_cw
 
+import android.content.DialogInterface
 import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
@@ -9,6 +10,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.anychart.chart.common.dataentry.DataEntry
 import com.github.mikephil.charting.charts.LineChart
@@ -38,7 +40,18 @@ class GraphViewer : AppCompatActivity() {
         val name = dB.getName()
 
         if (name!!.count == 0){
-            Toast.makeText(this, "No Entry Exists", Toast.LENGTH_SHORT).show()
+            val builder = this.let { AlertDialog.Builder(it) }
+            builder.setTitle("No Data")
+            builder.setMessage("Start adding your workout status daily and return!!!")
+            builder.setCancelable(false);
+            builder.setPositiveButton("OKAY", DialogInterface.OnClickListener {
+                    dialog, id ->
+                dialog.cancel()
+                finish()
+            })
+            val alert = builder.create()
+
+            alert.show()
                 return
         }
         else if (name.moveToFirst()) {
