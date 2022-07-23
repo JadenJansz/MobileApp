@@ -13,7 +13,7 @@
             android:title="Track Your Workouts" />
         <item
             android:id="@+id/check_fitness_status"
-            android:icon="@mipmap/check_icon"
+            android:icon="@drawable/check_icon"
             android:title="Check Fitness Status" />
         <item
             android:id="@+id/search_exercises"
@@ -21,7 +21,7 @@
             android:title="Search Exercises" />
         <item
             android:id="@+id/notice"
-            android:icon="@drawable/search_icon"
+            android:icon="@drawable/view_icon"
             android:title="View Notices" />
         <item
             android:id="@+id/payment"

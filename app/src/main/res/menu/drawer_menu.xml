@@ -4,16 +4,16 @@
     tools:showIn="navigation_view">
     <group android:checkableBehavior="single">
         <item android:id="@+id/add_member"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:icon="@drawable/addmem_icon"
             android:title="Add Member" />
         <item android:id="@+id/view_member"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:icon="@drawable/view_icon"
             android:title="View Members" />
         <item android:id="@+id/notice"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:icon="@drawable/create_icon"
             android:title="Create Notice" />
         <item android:id="@+id/logout"
-            android:icon="@drawable/ic_baseline_supervisor_account_24"
+            android:icon="@drawable/logout_icon"
             android:title="Logout" />
     </group>
 </menu>

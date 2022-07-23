@@ -40,6 +40,7 @@ class ViewMemberADMIN : AppCompatActivity() {
             val nic : TextView = findViewById(R.id.txt_nic_viewMemberADMIN)
             val avatar : ImageView = findViewById(R.id.avatar_viewMemberADMIN)
 
+            uid = members.uid.toString()
             if(members.contact == ""){
                 val builder = this.let { AlertDialog.Builder(it) }
                 builder.setTitle("Non - Functional Account")
@@ -62,7 +63,11 @@ class ViewMemberADMIN : AppCompatActivity() {
                 emergency.text = members.emergency
                 nic.text = members.nic
 
-                Glide.with(this).load(members.profileImage).into(avatar)
+                if(members.profileImage == ""){
+                    Glide.with(this).load(R.mipmap.profileicon).into(avatar)
+                }else{
+                    Glide.with(this).load(members.profileImage).into(avatar)
+                }
             }
         }
 

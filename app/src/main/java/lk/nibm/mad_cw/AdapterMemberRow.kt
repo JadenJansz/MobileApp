@@ -32,7 +32,11 @@ class AdapterMemberRow(private val userList: ArrayList<UserArray>, context: Cont
         holder.email.text = currentItem.email
         holder.name.text = currentItem.fname + " " + currentItem.lname
 
-       Glide.with(context).load(currentItem.profileImage).into(holder.profileImage)
+        if(currentItem.profileImage == ""){
+            Glide.with(context).load(R.mipmap.profileicon).into(holder.profileImage)
+        }else{
+            Glide.with(context).load(currentItem.profileImage).into(holder.profileImage)
+        }
 
         holder.itemView.setOnClickListener {
             onItemClick?.invoke(currentItem)

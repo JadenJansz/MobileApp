@@ -49,7 +49,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txt_memEmailLayout"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="303dp"
+            android:layout_width="300dp"
             android:layout_height="84dp"
             android:hint="E-mail"
             android:textColor="@color/black"
@@ -72,14 +72,14 @@
 
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="251dp"
-            android:layout_height="43dp"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.505"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.557" />
+            app:layout_constraintVertical_bias="0.63" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
@@ -95,7 +95,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.63"/>
+        app:layout_constraintVertical_bias="0.67"/>
 
 
     <ProgressBar

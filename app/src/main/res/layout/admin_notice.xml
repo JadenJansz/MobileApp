@@ -6,6 +6,46 @@
     android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/img_payback"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@mipmap/pattern002"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/bac_add"
+        android:layout_width="380dp"
+        android:layout_height="550dp"
+        android:background="@drawable/card_back"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".55"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5" >
+
+        <TextView
+            android:id="@+id/lbl_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="52dp"
+            android:fontFamily="@font/samsungsans_bold"
+            android:text="Add Notice"
+            android:textColor="@color/lightblue002"
+            android:textSize="30dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.1" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_subjectLayout"
@@ -21,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229">
+        app:layout_constraintVertical_bias="0.3">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_subject"
@@ -46,12 +86,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.541">
+        app:layout_constraintVertical_bias="0.641">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_message"
             android:layout_width="match_parent"
-            android:layout_height="193dp"
+            android:layout_height="190dp"
             android:fontFamily="@font/samsungsans_regular"
             android:inputType="textMultiLine"
             android:textColor="@color/black" />
@@ -62,12 +102,15 @@
         android:layout_width="150dp"
         android:layout_height="48dp"
         android:text="Send"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:background="@drawable/button_bg"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.803" />
+        app:layout_constraintVertical_bias="0.9" />
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -80,5 +123,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

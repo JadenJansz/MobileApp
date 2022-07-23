@@ -5,112 +5,275 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="match_parent"
-    android:fillViewport="true">
+    android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
+    android:fillViewport="true"
+    android:background="@mipmap/pattern002">
 
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     tools:context=".NewRegistration">
 
-    <EditText
-        android:id="@+id/txt_fname"
-        android:layout_width="293dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="256dp"
-        android:ems="10"
-        android:hint="First Name"
-        android:inputType="textPersonName"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="365dp"
+        android:layout_height="1050dp"
+        android:background="@drawable/card_back"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent=".55"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.5"
+        android:layout_marginTop="25dp"
+        android:layout_marginBottom="25dp">
 
-    <EditText
-        android:id="@+id/txt_contact"
-        android:layout_width="286dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="624dp"
-        android:ems="10"
-        android:hint="Contact Number"
-        android:inputType="textPersonName"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_fnameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="220dp"
+        android:hint="First Name"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_fname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_lnameLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="310dp"
+        android:hint="Last Name"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.341"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_lname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_nicLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="400dp"
+        android:hint="NIC"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.323"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_nic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="textPersonName"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_dobLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="240dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="490dp"
+        android:hint="Date of Birth"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.165"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_dob"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="date"
+            android:enabled="false"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <ImageView
+        android:id="@+id/image_dob"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="490dp"
+        android:layout_marginLeft="150dp"
+        android:backgroundTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.838"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/clendar_icon" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_contactLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="580dp"
+        android:hint="Contact Number"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
+        app:counterEnabled="true"
+        app:counterTextColor="@color/black"
+        app:counterMaxLength="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.352"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_emergency_contactLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="300dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="670dp"
+        android:hint="Emergency Contact Number"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
+        app:counterEnabled="true"
+        app:counterTextColor="@color/black"
+        app:counterMaxLength="10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.317"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_emergency_contact"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="phone"
+            android:maxLength="10"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_passwordLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="310dp"
+        android:layout_height="85dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="760dp"
+        android:hint="New Password"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txt_confpassLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="310dp"
+        android:layout_height="85dp"
+        android:layout_marginTop="850dp"
+        android:layout_marginLeft="20dp"
+        android:hint="Confirm Password"
+        android:textColor="@color/black"
+        android:textColorHint="#999999"
+        app:boxStrokeColor="@color/purple_200"
+        app:endIconMode="password_toggle"
+        app:endIconTint="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.435"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txt_confpass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_regular"
+            android:inputType="textPassword"
+            android:maxLines="1"
+            android:textColor="@color/black" />
+    </com.google.android.material.textfield.TextInputLayout>
 
     <Button
         android:id="@+id/btn_signUp"
         android:layout_width="131dp"
         android:layout_height="57dp"
-        android:layout_marginTop="924dp"
-        android:layout_marginBottom="80dp"
-        android:text="Sign Up"
+        android:layout_marginTop="960dp"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/samsungsans_medium"
+        android:text="Save"
+        android:textColor="@color/white"
+        android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txt_password"
-        android:layout_width="284dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="776dp"
-        android:ems="10"
-        android:hint="Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.519"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txt_confpass"
-        android:layout_width="278dp"
-        android:layout_height="51dp"
-        android:layout_marginTop="856dp"
-        android:ems="10"
-        android:hint="Confirm Password"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.464"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txt_emergency_contact"
-        android:layout_width="284dp"
-        android:layout_height="52dp"
-        android:layout_marginTop="688dp"
-        android:ems="10"
-        android:hint="Emergency Contact Number"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.47"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/txt_dob"
-        android:layout_width="286dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="532dp"
-        android:ems="10"
-        android:hint="Date Of Birth"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.536"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/txt_nic"
-        android:layout_width="287dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="440dp"
-        android:ems="10"
-        android:hint="NIC"
-        android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.532"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -127,29 +290,33 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.158" />
 
-    <EditText
-        android:id="@+id/txt_lname"
-        android:layout_width="292dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="344dp"
-        android:ems="10"
-        android:hint="Last Name"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/lbl_add"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Enter Details"
+            android:textColor="@color/lightblue001"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.018" />
+
 
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/avatar_new_reg"
         android:layout_width="139dp"
         android:layout_height="138dp"
-        android:layout_marginTop="68dp"
+        android:layout_marginTop="70dp"
+        android:src="@mipmap/profileicon"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@mipmap/profileicon" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+</androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
