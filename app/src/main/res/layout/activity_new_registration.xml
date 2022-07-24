@@ -15,7 +15,7 @@
     tools:context=".NewRegistration">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="365dp"
+        android:layout_width="325dp"
         android:layout_height="1050dp"
         android:background="@drawable/card_back"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -31,7 +31,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_fnameLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="85dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="220dp"
@@ -57,7 +57,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_lnameLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="85dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="310dp"
@@ -83,7 +83,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_nicLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="85dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="400dp"
@@ -109,9 +109,9 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_dobLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="240dp"
+        android:layout_width="210dp"
         android:layout_height="85dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="490dp"
         android:hint="Date of Birth"
         android:textColor="@color/black"
@@ -149,7 +149,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_contactLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="85dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="580dp"
@@ -179,7 +179,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_emergency_contactLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="300dp"
+        android:layout_width="270dp"
         android:layout_height="85dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="670dp"
@@ -209,7 +209,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_passwordLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="310dp"
+        android:layout_width="270dp"
         android:layout_height="85dp"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="760dp"
@@ -237,7 +237,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_confpassLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="310dp"
+        android:layout_width="270dp"
         android:layout_height="85dp"
         android:layout_marginTop="850dp"
         android:layout_marginLeft="20dp"

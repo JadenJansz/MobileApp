@@ -35,7 +35,7 @@
         <TextView
             android:id="@+id/lbl_myacc"
             android:layout_width="wrap_content"
-            android:layout_height="52dp"
+            android:layout_height="47dp"
             android:fontFamily="@font/samsungsans_bold"
             android:text="My Account"
             android:textColor="@color/lightblue002"
@@ -57,7 +57,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.11" />
+            app:layout_constraintVertical_bias="0.098" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/txt_fnameviewMemberADMINLayout"

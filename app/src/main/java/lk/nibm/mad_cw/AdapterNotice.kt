@@ -23,7 +23,7 @@ class AdapterNotice(private val noticeList: ArrayList<NoticeArray>, context: Con
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem = noticeList[position]
-        holder.date.text = currentItem.date
+        holder.date.text = "Date : " + currentItem.date
         holder.subject.text = currentItem.subject
         holder.message.text = currentItem.message
     }

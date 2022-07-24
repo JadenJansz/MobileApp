@@ -5,7 +5,7 @@
     <group android:checkableBehavior="single">
         <item android:id="@+id/add_member"
             android:icon="@drawable/addmem_icon"
-            android:title="Add Member" />
+            android:title="Add Users" />
         <item android:id="@+id/view_member"
             android:icon="@drawable/view_icon"
             android:title="View Members" />

@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="10dp"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginLeft="15dp"
+    android:layout_marginRight="15dp"
     android:layout_marginTop="20dp"
     android:layout_marginBottom="20dp"
     android:paddingBottom="10dp"
@@ -15,26 +15,44 @@
 
     <TextView
         android:id="@+id/notice_date"
-        android:layout_width="370dp"
+        android:layout_width="170dp"
         android:layout_height="45dp"
         android:layout_marginLeft="10dp"
-        android:background="@drawable/edittext_bg2"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/toast_back"
         android:paddingLeft="10dp"
+        android:fontFamily="@font/samsungsans_regular"
         android:paddingTop="10dp"
         android:text="Date"
-        android:textSize="20sp" />
+        android:textSize="15sp" />
+
+    <TextView
+        android:id="@+id/notice_subjectlabel"
+        android:layout_width="96dp"
+        android:layout_height="46dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/toast_back"
+        android:fontFamily="@font/samsungsans_regular"
+        android:paddingLeft="10dp"
+        android:paddingTop="10dp"
+        android:text="Subject : "
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/notice_subject"
-        android:layout_width="370dp"
-        android:layout_height="45dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="55dp"
-        android:background="@drawable/edittext_bg2"
+        android:layout_width="245dp"
+        android:layout_height="46dp"
+        android:layout_marginLeft="110dp"
+        android:layout_marginTop="45dp"
+        android:layout_marginRight="10dp"
+        android:background="@drawable/toast_back"
+        android:fontFamily="@font/samsungsans_regular"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:text="Subject"
-        android:textSize="20sp" />
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/notice_message"
@@ -42,10 +60,13 @@
         android:layout_height="160dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="110dp"
+        android:layout_marginRight="10dp"
+        android:fontFamily="@font/samsungsans_regular"
         android:background="@drawable/edittext_bg2"
         android:paddingLeft="10dp"
         android:paddingTop="10dp"
         android:text="Message"
+        android:textColor="@color/black"
         android:textSize="18dp" />
 
 </RelativeLayout>

@@ -138,13 +138,15 @@ class ViewMemberADMIN : AppCompatActivity() {
                     reference.child(uid).updateChildren(user)
                         .addOnSuccessListener {
                             progressBar.setVisibility(View.GONE)
-                            Toast.makeText(this, "Successfully $message Account", Toast.LENGTH_SHORT).show()
+                            val toast = ToastClass()
+                            toast.showToast(this, "Successfully $message Account", 0)
                             changeButtonText()
                         }
                 }
                 else{
                     progressBar.setVisibility(View.GONE)
-                    Toast.makeText(this, "Error! Try Again", Toast.LENGTH_SHORT).show()
+                    val toast = ToastClass()
+                    toast.showToast(this, "Failed! Try Again", 1)
                 }
             }
     }

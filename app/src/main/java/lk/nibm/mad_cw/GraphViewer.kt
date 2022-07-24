@@ -47,7 +47,6 @@ class GraphViewer : AppCompatActivity() {
             builder.setPositiveButton("OKAY", DialogInterface.OnClickListener {
                     dialog, id ->
                 dialog.cancel()
-                finish()
             })
             val alert = builder.create()
 
@@ -63,7 +62,7 @@ class GraphViewer : AppCompatActivity() {
 
         spinner = findViewById(R.id.spinnerExercise)
         val arrayAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, exerciseName)
-
+        arrayAdapter.setDropDownViewResource(R.layout.spin_item)
         spinner.adapter = arrayAdapter
 
         spinner.onItemSelectedListener = object  :
@@ -101,7 +100,8 @@ class GraphViewer : AppCompatActivity() {
         val week = dB.getWeekCount()
 
         if (week!!.count == 0){
-            Toast.makeText(this, "No Entry Exists", Toast.LENGTH_SHORT).show()
+            val toast = ToastClass()
+            toast.showToast(this, "No Available Data to Display", 1)
 
         }
         else if (week != null && week.moveToFirst()) {

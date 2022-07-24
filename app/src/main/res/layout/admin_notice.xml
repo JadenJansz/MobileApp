@@ -20,7 +20,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bac_add"
-        android:layout_width="380dp"
+        android:layout_width="340dp"
         android:layout_height="550dp"
         android:background="@drawable/card_back"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,7 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="52dp"
             android:fontFamily="@font/samsungsans_bold"
-            android:text="Add Notice"
+            android:text="Create Notice"
             android:textColor="@color/lightblue002"
             android:textSize="30dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -50,7 +50,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_subjectLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="346dp"
+        android:layout_width="310dp"
         android:layout_height="86dp"
         android:hint="Subject"
         android:textColor="@color/black"
@@ -61,7 +61,7 @@
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.3">
+        app:layout_constraintVertical_bias="0.25">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_subject"
@@ -76,7 +76,7 @@
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/txt_messageLayout"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="347dp"
+        android:layout_width="310dp"
         android:layout_height="227dp"
         android:hint="Message"
         android:textColor="@color/black"

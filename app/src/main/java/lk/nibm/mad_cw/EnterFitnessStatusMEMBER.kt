@@ -5,6 +5,7 @@ import android.content.DialogInterface
 import android.database.Cursor
 import android.database.SQLException
 import android.graphics.Color
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentTransaction
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.firebase.auth.FirebaseAuth
@@ -34,6 +36,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
     private val calenderInstance: Calendar = Calendar.getInstance()
     var currentWeek : Int = 0
 
+    val toast = ToastClass()
     var exerciseList : ArrayList<Exercises> = ArrayList()
     var DB : DBHelper = DBHelper(context)
 
@@ -66,11 +69,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
         btnSubmitExercise.setOnClickListener(this)
 
         drop = view.findViewById(R.id.drop)
-        drop.setOnClickListener(){
-            DB = DBHelper(context)
-            DB.deleteAllData()
-        }
-
+        drop.setOnClickListener(this)
         dateText = view.findViewById(R.id.txt_date)
         dateTextLayout = view.findViewById(R.id.txt_dateLayout)
         imageDate = view.findViewById(R.id.image_date)
@@ -78,8 +77,6 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
         dateText.setOnClickListener(this)
         dateTextLayout.setOnClickListener(this)
 
-
-//        dateText.text = calenderInstance.get(Calendar.DAY_OF_MONTH).toString() + " - " + calenderInstance.get(Calendar.MONTH).toString() + " - " + calenderInstance.get(Calendar.YEAR).toString()
         showCurrentData()
     }
 
@@ -99,6 +96,10 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
                 showDatePickerDialog()
                 dateTextLayout.error = ""
                 dateTextLayout.boxStrokeColor = Color.rgb(213,128,255)
+            }
+
+            R.id.drop -> {
+                deleteAllData()
             }
         }
 
@@ -132,28 +133,32 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
             val editTextName : TextInputEditText = exerciseView.findViewById(R.id.fitness_name)
             val editTextNameLayout : TextInputLayout = exerciseView.findViewById(R.id.fitness_nameLayout)
 
-            val editTextWeight : TextInputEditText = exerciseView.findViewById(R.id.txt_date)
-            val editTextWeightLayout : TextInputLayout = exerciseView.findViewById(R.id.txt_dateLayout)
+            val editTextWeight : TextInputEditText = exerciseView.findViewById(R.id.fitness_weight)
+            val editTextWeightLayout : TextInputLayout = exerciseView.findViewById(R.id.fitness_weightLayout)
 
             if(dateText.text.toString() == ""){
 
                 dateTextLayout.error = "*required"
                 dateTextLayout.boxStrokeColor = Color.RED
+                dateText.requestFocus()
                 return false
             }
             else if(weekText.text.toString() == ""){
                 weekTextLayout.error = "*required"
                 weekTextLayout.boxStrokeColor = Color.RED
+                weekText.requestFocus()
                 return false
             }
             else if(editTextName.text.toString() == ""){
                 editTextNameLayout.error = "*required"
                 editTextNameLayout.boxStrokeColor = Color.RED
+                editTextName.requestFocus()
                 return false
             }
             else if(editTextWeight.text.toString() == ""){
                 editTextWeightLayout.error = "*required"
                 editTextWeightLayout.boxStrokeColor = Color.RED
+                editTextWeight.requestFocus()
                 return false
             }
             if(editTextName.text.toString() != "" && editTextWeight.text.toString() != "" && dateText.text.toString() != "" && weekText.text.toString() != ""){
@@ -174,7 +179,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
         if(exerciseList.size == 0){
             result = false
-            Toast.makeText(context, "Enter the date", Toast.LENGTH_SHORT).show()
+            Toast.makeText(context, "Add At Least 1 Exercise", Toast.LENGTH_SHORT).show()
         }else if(!result){
             Toast.makeText(context, "Enter All Details", Toast.LENGTH_SHORT).show()
         }
@@ -186,7 +191,18 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
         val exercise : View = layoutInflater.inflate(R.layout.row_enter_fitness, null, false)
 
         val fitnessName : TextInputEditText = exercise.findViewById(R.id.fitness_name)
-        val fitnessWeight : TextInputEditText = exercise.findViewById(R.id.txt_date)
+        val fitnessNameLayout : TextInputLayout = exercise.findViewById(R.id.fitness_nameLayout)
+        fitnessName.setOnClickListener(){
+            fitnessNameLayout.error = ""
+            fitnessNameLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
+        val fitnessWeight : TextInputEditText = exercise.findViewById(R.id.fitness_weight)
+        val fitnessWeightLayout : TextInputLayout = exercise.findViewById(R.id.fitness_weightLayout)
+        fitnessWeight.setOnClickListener(){
+            fitnessWeightLayout.error = ""
+            fitnessWeightLayout.boxStrokeColor = Color.rgb(213,128,255)
+        }
+
         val fitnessRemove : ImageView = exercise.findViewById(R.id.image_remove)
 
         fitnessName.setText(name)
@@ -235,20 +251,20 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
                         exerciseList[i].weight)
 
                     if(insertTrue){
-                        Toast.makeText(context, "New Entry Added", Toast.LENGTH_SHORT).show()
+                        toast.showToast(requireContext(), "New Entry Added", 0)
                         currentWeek += 1
                     }else{
-                        Toast.makeText(context, "This week is already added", Toast.LENGTH_SHORT).show()
+                        toast.showToast(requireContext(), "This Week Is Already Entered", 1)
                         weekTextLayout.boxStrokeColor = Color.RED
                         weekTextLayout.error = ""
                     }
                 }
             }
             else if(weekText.text.toString().toInt()  > currentWeek + 1){
-                Toast.makeText(context, "Week "+(currentWeek+1)+" is not recorded", Toast.LENGTH_SHORT).show()
+                toast.showToast(requireContext(), "Week "+(currentWeek+1)+" is not recorded", 1)
             }
             else{
-                Toast.makeText(context, "This week is already added", Toast.LENGTH_SHORT).show()
+                toast.showToast(requireContext(), "This Week Is Already Entered", 1)
                 weekTextLayout.boxStrokeColor = Color.RED
                 weekTextLayout.error = ""
 
@@ -269,7 +285,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
         try {
             val res: Cursor? = DB.getData(FirebaseAuth.getInstance().currentUser!!.uid)
             if (res!!.count === 0) {
-                Toast.makeText(context, "No Entry Exists", Toast.LENGTH_SHORT).show()
+                toast.showToast(requireContext(), "There Are No Records To Display", 2)
                 return
             }
 
@@ -286,5 +302,27 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
             e.printStackTrace()
         }
 
+    }
+
+    private fun deleteAllData(){
+        DB = DBHelper(context)
+
+        val builder = context?.let { AlertDialog.Builder(it) }
+        builder?.setTitle("Remove All Exercise")
+        builder?.setMessage("This will remove all the exercises and this action cannot be undone\n\nAre you sure?")
+        builder?.setPositiveButton("Remove", DialogInterface.OnClickListener {
+                dialog, id ->
+            dialog.cancel()
+            DB.deleteAllData()
+
+            requireFragmentManager().beginTransaction().replace(R.id.fragment_container,  EnterFitnessStatusMEMBER()).commit()
+
+        })
+        builder?.setNegativeButton("Cancel", DialogInterface.OnClickListener{
+                dialog, id ->
+            dialog.cancel()
+        })
+        val alert = builder?.create()
+        alert!!.show()
     }
 }

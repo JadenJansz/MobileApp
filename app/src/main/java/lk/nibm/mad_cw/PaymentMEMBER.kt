@@ -67,7 +67,8 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
     }
 
     override fun onPaymentError(p0: Int, p1: String?) {
-        Toast.makeText(this, "Payment Was Not Successful", Toast.LENGTH_SHORT).show()
+        val toast = ToastClass()
+        toast.showToast(this, "Payment Was Not Successful", 1)
     }
 
     private fun makePayment() {

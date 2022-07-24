@@ -67,6 +67,7 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
     private var yearText : Int = 0
     private val dob = calenderInstance
 
+    val toast = ToastClass()
     private val CODE_IMAGE_GALLERY = 1
     private val SAMPLE_CROPPED_IMG_NAME = "SampleCropping"
 
@@ -206,24 +207,24 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
 
         fileRef.putFile(imageUri).addOnCompleteListener(this) {task ->
             if (task.isSuccessful){
-                Toast.makeText(this, "Photo Uploaded", Toast.LENGTH_SHORT).show()
+                toast.showToast(this, "Image Saved", 0)
                 val downloadUrl : String = fileRef.downloadUrl.toString()
 
                 val userRef = FirebaseDatabase.getInstance().reference.child("Users").child(mAuth.currentUser!!.uid)
                 userRef.child("profileImage").setValue(downloadUrl)
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
-                            Toast.makeText(this, "Photo Uploaded To Database", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(this, "Photo Uploaded To Database", Toast.LENGTH_SHORT).show()
 
                         }
                         else{
-                            Toast.makeText(this, "Error Try Again" + task.exception!!.message, Toast.LENGTH_SHORT).show()
+                            toast.showToast(this, "There Was An Error, Please Try Again!", 1)
 
                         }
                     }
             }
             else{
-                Toast.makeText(this, "Error" + task.exception!!.message , Toast.LENGTH_SHORT).show()
+                toast.showToast(this, "There Was An Error, Please Try Again!", 1)
                 Log.d("Error", task.exception!!.message.toString())
 
             }
@@ -345,7 +346,7 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
                 pass!!.updatePassword(password).addOnCompleteListener { task ->
                     if (task.isSuccessful){
                         progressBar.setVisibility(View.GONE)
-                        Toast.makeText(this, "Successfully Updated", Toast.LENGTH_SHORT).show()
+                        toast.showToast(this, "Successfully Updated", 0)
 
                         val intent = Intent(this, MainActivity::class.java)
                         startActivity(intent)
@@ -355,34 +356,7 @@ class NewRegistration : AppCompatActivity(), View.OnClickListener {
             }
             .addOnFailureListener{
                 progressBar.setVisibility(View.GONE)
-                Toast.makeText(this, "Failed to Update! Try Again", Toast.LENGTH_SHORT).show()
+                toast.showToast(this, "Failed To Update, Please Try Again!", 1)
             }
-
-//        mAuth.createUserWithEmailAndPassword(email, password)
-//            .addOnCompleteListener(this) { task ->
-//                if (task.isSuccessful) {
-//                    val user = User(fname,lname,email,nic, contact, emergencyContact, "MEMBER")
-//                    FirebaseDatabase.getInstance().getReference("Users")
-//                        .child(FirebaseAuth.getInstance().currentUser!!.uid)
-//                        .setValue(user).addOnCompleteListener(this) {task ->
-//
-//                            if(task.isSuccessful){
-//                                Toast.makeText(this, "Successfully Registered", Toast.LENGTH_SHORT).show()
-//                                progressBar.setVisibility(View.GONE)
-//                            }else{
-//                                Toast.makeText(this, "Try Again", Toast.LENGTH_SHORT).show()
-//                                progressBar.setVisibility(View.GONE)
-//                            }
-//                        }
-//                    // Sign in success, update UI with the signed-in user's information
-//                    Log.d(TAG, "signInWithEmail:success")
-//
-//                } else {
-//                    // If sign in fails, display a message to the user.
-//                    Log.w(TAG, "signInWithEmail:failure", task.exception)
-//                    Toast.makeText(this, "Authentication failed.", Toast.LENGTH_SHORT).show()
-//                    progressBar.setVisibility(View.GONE)
-//                }
-//            }
     }
 }

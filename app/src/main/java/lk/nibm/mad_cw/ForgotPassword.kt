@@ -64,11 +64,13 @@ class ForgotPassword : AppCompatActivity() {
         mAuth.sendPasswordResetEmail(email)
             .addOnCompleteListener{ task ->
                 if(task.isSuccessful){
-                    Toast.makeText(this, "Check Your Email", Toast.LENGTH_SHORT).show()
+                    val toast = ToastClass()
+                    toast.showToast(this, "Check Your Email", 2)
                     progressBar.setVisibility(View.GONE)
                 }
                 else{
-                    Toast.makeText(this, "Try Again!!!", Toast.LENGTH_SHORT).show()
+                    val toast = ToastClass()
+                    toast.showToast(this, "Unsuccessful, Try Again!!!", 1)
                     progressBar.setVisibility(View.GONE)
                 }
             }

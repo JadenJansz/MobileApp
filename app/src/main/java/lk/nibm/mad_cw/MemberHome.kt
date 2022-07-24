@@ -137,9 +137,9 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             R.id.check_fitness_status -> {
                 val status = Intent(this, GraphViewer::class.java)
                 startActivity(status)
-                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
-                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
-                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
+//                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
+//                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
+//                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
             }
 
             R.id.notice -> {

@@ -91,13 +91,15 @@ class NoticeADMIN : Fragment() {
         reference.child(Calendar.getInstance().getTime().toString()).setValue(notice)
             .addOnSuccessListener {
                 progressBar.setVisibility(View.GONE)
-                Toast.makeText(context, "Successfully Sent", Toast.LENGTH_SHORT).show()
+                val toast = ToastClass()
+                toast.showToast(requireContext(), "Successfully Sent", 0)
                 txtSubject.setText("")
                 txtMessage.setText("")
             }
             .addOnFailureListener{
                 progressBar.setVisibility(View.GONE)
-                Toast.makeText(context, "Failed to Update! Try Again", Toast.LENGTH_SHORT).show()
+                val toast = ToastClass()
+                toast.showToast(requireContext(), "Failed to Send! Try Again", 1)
             }
     }
 }

@@ -4,24 +4,38 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:theme="@style/Theme.MaterialComponents.DayNight.DarkActionBar"
     android:layout_height="match_parent"
+    android:fontFamily="@font/samsungsans_regular"
+
     android:layout_width="match_parent"
     android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:padding="10dp"
+        android:background="@mipmap/pattern002"
         android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/lbl_lastUpdated"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="30dp"
-        android:text="TextView"
-        android:textColor="@color/black"
-        tools:layout_editor_absoluteX="150dp"
-        tools:layout_editor_absoluteY="50dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="254dp"
+        android:orientation="vertical"
+        android:layout_marginBottom="19dp"
+        android:background="@drawable/card_back"
+        android:elevation="10dp">
+
+
+        <TextView
+            android:id="@+id/lbl_lastUpdated"
+            android:layout_width="349dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/samsungsans_regular"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            tools:layout_editor_absoluteX="150dp"
+            tools:layout_editor_absoluteY="50dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -32,9 +46,10 @@
                 android:id="@+id/fitness_name"
                 android:layout_width="126dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="18dp"
                 android:layout_marginRight="5dp"
-                android:text="Choose Date"
+                android:text="Select Date"
+                android:textSize="18dp"
                 android:textColor="@color/black" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -42,7 +57,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="122dp"
                 android:layout_height="85dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="15dp"
                 android:hint="DD--MM--YY"
                 android:textColor="@color/black"
                 android:textColorHint="#999999"
@@ -66,22 +81,23 @@
                 android:layout_height="50dp"
                 android:layout_marginTop="5dp"
                 android:backgroundTint="@color/black"
-                app:srcCompat="@drawable/ic_baseline_calendar" />
+                app:srcCompat="@drawable/clendar_icon" />
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp">
+            android:layout_marginTop="10dp">
 
             <TextView
                 android:id="@+id/fitness_week"
                 android:layout_width="127dp"
                 android:layout_height="40dp"
-                android:layout_marginLeft="10dp"
+                android:layout_marginLeft="15dp"
                 android:layout_marginRight="5dp"
                 android:text="Enter Week"
+                android:textSize="18dp"
                 android:textColor="@color/black" />
 
             <com.google.android.material.textfield.TextInputLayout
@@ -89,7 +105,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="90dp"
                 android:layout_height="75dp"
-                android:layout_marginLeft="30dp"
+                android:layout_marginLeft="15dp"
                 android:textColor="@color/black"
                 android:textColorHint="#999999"
                 app:boxStrokeColor="@color/purple_200">
@@ -104,58 +120,73 @@
                     android:textColor="@color/black" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
-
         </LinearLayout>
+    </LinearLayout>
 
     <LinearLayout
 
         android:id="@+id/layout_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical" />
+        android:orientation="vertical"
+        android:elevation="10dp"/>
 
-        <Button
-            android:id="@+id/btn_addExercise"
-            android:layout_width="155dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="130dp"
-            android:text="Add Exercise"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.175"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btn_submitExercise"
-            android:layout_width="155dp"
-            android:layout_height="55dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginLeft="130dp"
-            android:text="Update Data"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.175"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ProgressBar
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
-            android:layout_marginLeft="150dp"
-            android:visibility="gone"
-            style="?android:attr/progressBarStyleLarge"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent" />
-
-        <Button
-            android:id="@+id/drop"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DROP" />
+            android:layout_height="164dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/card_back"
+            android:elevation="10dp">
+
+            <Button
+                android:id="@+id/btn_addExercise"
+                android:layout_width="140dp"
+                android:layout_height="46dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/button_bg"
+                android:text="Add Exercise"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.13"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_submitExercise"
+                android:layout_width="140dp"
+                android:layout_height="46dp"
+                android:layout_marginLeft="130dp"
+                android:layout_marginTop="28dp"
+                android:background="@drawable/button_bg"
+                android:text="Update Data"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.731"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@+id/progressBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="150dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/drop"
+                android:layout_width="300dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="96dp"
+                android:text="DROP"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.509"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </LinearLayout>
 

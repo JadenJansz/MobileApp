@@ -33,6 +33,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     lateinit var reference: DatabaseReference
 
     lateinit var progressBar : ProgressBar
+    val toast = ToastClass()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,21 +92,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         if(email.isEmpty()){
             txtUsernameLayout.error = "*email is required"
             txtUsernameLayout.boxStrokeColor = Color.RED
+            txtUsername.requestFocus()
             return
         }
         if(!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
             txtUsernameLayout.error = "*invalid email address"
             txtUsernameLayout.boxStrokeColor = Color.RED
+            txtUsername.requestFocus()
             return
         }
         if(password.isEmpty()){
             txtPasswordLayout.error = "*password cannot be empty"
             txtPasswordLayout.boxStrokeColor = Color.RED
+            txtPassword.requestFocus()
             return
         }
         if(password.length < 6){
             txtPasswordLayout.error = "*password should be more than 6 characters"
             txtPasswordLayout.boxStrokeColor = Color.RED
+            txtPassword.requestFocus()
             return
         }
 
@@ -131,10 +136,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     val memberHomePage = Intent(this, MemberHome::class.java)
                                     startActivity(memberHomePage)
                                     progressBar.setVisibility(View.GONE)
-                                    //this.finish()
+                                    this.finish()
                                 }
                                 else{
-                                    Toast.makeText(this, "Your Account Has Been Disabled! Contact Your Administrator!", Toast.LENGTH_SHORT).show()
+                                    toast.showToast(this, "Your Account has been Disabled, Contact Your Administrator!", 2)
                                     progressBar.setVisibility(View.GONE)
                                 }
                             }
@@ -151,11 +156,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     val newRegistrationPage = Intent(this, NewRegistration::class.java)
                                     startActivity(newRegistrationPage)
                                     progressBar.setVisibility(View.GONE)
-                                    //this.finish()
+                                    this.finish()
 
                                 }
                                 else if(dataSnapshot.child("nic").value != ""){
-                                    Toast.makeText(this, "Please Verify Your Email from your Gmail account", Toast.LENGTH_SHORT).show()
+                                    toast.showToast(this, "Please Verify Your Email from your Gmail Account", 2)
                                     progressBar.setVisibility(View.GONE)
                                 }
                             }
@@ -163,13 +168,13 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
 
                         user.sendEmailVerification()
-                        Toast.makeText(this, "Check Your Email", Toast.LENGTH_SHORT).show()
+                        toast.showToast(this, "Check Your Email", 2)
                         progressBar.setVisibility(View.GONE)
                     }
 
                 }
                 else{
-                    Toast.makeText(this, "Invalid credentials", Toast.LENGTH_SHORT).show()
+                    toast.showToast(this, "Invalid Credentials", 1)
                     progressBar.setVisibility(View.GONE)
                 }
             }

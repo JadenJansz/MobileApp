@@ -7,98 +7,108 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/bac_add"
-        android:layout_width="370dp"
-        android:layout_height="560dp"
+        android:layout_width="wrap_content"
+        android:layout_height="668dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_marginStart="21dp"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="95dp"
-        android:layout_marginEnd="21dp"
-        android:layout_marginBottom="76dp"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="34dp"
         android:background="@drawable/card_back"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.5" />
-
-    <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gif_lol"
-        android:layout_width="300dp"
-        android:layout_height="300dp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginTop="130dp" />
-
-    <TextView
-        android:id="@+id/exercise_name"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="440dp"
-        android:layout_marginEnd="60dp"
-        android:fontFamily="@font/samsungsans_medium"
-        android:paddingLeft="20dp"
-        android:textAlignment="center"
-        android:textColor="@color/gray"
-        android:textSize="20dp" />
-
-    <TextView
-        android:id="@+id/exercise_bodypart"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="490dp"
-        android:layout_marginEnd="60dp"
-        android:drawableStart="@drawable/ibody_icon"
-        android:fontFamily="@font/samsungsans_regular"
-        android:paddingLeft="20dp"
-        android:textAlignment="center"
-        android:textColor="@color/lightgray"
-        android:textSize="17dp" />
+        app:layout_constraintVertical_bias="0.5">
 
 
-    <TextView
-        android:id="@+id/exercise_target"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="540dp"
-        android:layout_marginEnd="60dp"
-        android:drawableStart="@drawable/target_icon"
-        android:fontFamily="@font/samsungsans_regular"
-        android:paddingLeft="20dp"
-        android:textAlignment="center"
-        android:textColor="@color/lightgray"
-        android:textSize="17dp" />
+        <pl.droidsonroids.gif.GifImageView
+            android:id="@+id/gif_lol"
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.075" />
 
-    <TextView
-        android:id="@+id/exercise_equipment"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginStart="51dp"
-        android:layout_marginLeft="51dp"
-        android:layout_marginTop="590dp"
-        android:layout_marginEnd="60dp"
-        android:drawableStart="@drawable/track_icon"
-        android:fontFamily="@font/samsungsans_regular"
-        android:paddingLeft="20dp"
-        android:textAlignment="center"
-        android:textColor="@color/lightgray"
-        android:textSize="17dp" />
+        <TextView
+            android:id="@+id/exercise_name"
+            android:layout_width="300dp"
+            android:layout_height="50dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:fontFamily="@font/samsungsans_medium"
+            android:paddingLeft="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.442"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.72" />
+
+        <TextView
+            android:id="@+id/exercise_bodypart"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:drawableStart="@drawable/ibody_icon"
+            android:fontFamily="@font/samsungsans_regular"
+            android:paddingLeft="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/lightgray"
+            android:textSize="17dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/exercise_target"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.821" />
+
+        <TextView
+            android:id="@+id/exercise_target"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:drawableStart="@drawable/target_icon"
+            android:fontFamily="@font/samsungsans_regular"
+            android:paddingLeft="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/lightgray"
+            android:textSize="17dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/exercise_equipment"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.895" />
+
+        <TextView
+            android:id="@+id/exercise_equipment"
+            android:layout_width="300dp"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:drawableStart="@drawable/track_icon"
+            android:fontFamily="@font/samsungsans_regular"
+            android:paddingLeft="20dp"
+            android:textAlignment="center"
+            android:textColor="@color/lightgray"
+            android:textSize="17dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.442"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.974" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </RelativeLayout>

@@ -42,6 +42,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
     lateinit var reference: DatabaseReference
     lateinit var storageReference: StorageReference
 
+    val toast = ToastClass()
     private val CODE_IMAGE_GALLERY = 1
     private val SAMPLE_CROPPED_IMG_NAME = "SampleCropping"
 
@@ -109,7 +110,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
                     txtEmergency.setText(it.child("emergency").value.toString())
                 }
                 else{
-                    Toast.makeText(context, "Error Loading Data", Toast.LENGTH_SHORT).show()
+                    toast.showToast(requireContext(), "There Was An Error, Please Try Again!", 1)
                 }
             }
 
@@ -174,24 +175,24 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
 
         fileRef.putFile(imageUri).addOnCompleteListener {task ->
             if (task.isSuccessful){
-                Toast.makeText(context, "Photo Uploaded", Toast.LENGTH_SHORT).show()
+                toast.showToast(requireContext(), "Image Saved", 0)
                 var downloadUrl : String = fileRef.child("Profile Images/"+mAuth.currentUser!!.uid+".jpg").downloadUrl.toString()
 
                 val userRef = FirebaseDatabase.getInstance().reference.child("Users").child(mAuth.currentUser!!.uid)
                 userRef.child("profileImage").setValue("https://firebasestorage.googleapis.com/v0/b/android-project-5438e.appspot.com/o/Profile%20Images%2F"+mAuth.currentUser!!.uid+".jpg?alt=media") //Had downloadUrl
                     .addOnCompleteListener { task ->
                         if (task.isSuccessful){
-                            Toast.makeText(context, "Photo Uploaded To Database", Toast.LENGTH_SHORT).show()
+//                            Toast.makeText(context, "Photo Uploaded To Database", Toast.LENGTH_SHORT).show()
 
                         }
                         else{
-                            Toast.makeText(context, "Error Try Again" + task.exception!!.message, Toast.LENGTH_SHORT).show()
+                            toast.showToast(requireContext(), "There Was An Error, Please Try Again!", 1)
 
                         }
                     }
             }
             else{
-                Toast.makeText(context, "Error Try Again", Toast.LENGTH_SHORT).show()
+                toast.showToast(requireContext(), "There Was An Error, Please Try Again!", 1)
 
             }
         }
@@ -271,12 +272,12 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
         reference.child(FirebaseAuth.getInstance().currentUser!!.uid).updateChildren(user)
             .addOnSuccessListener {
                 progressBar.setVisibility(View.GONE)
-                Toast.makeText(context, "Successfully Updated", Toast.LENGTH_SHORT).show()
+                toast.showToast(requireContext(), "Successfully Updated", 0)
 
             }
             .addOnFailureListener{
                 progressBar.setVisibility(View.GONE)
-                Toast.makeText(context, "Failed to Update! Try Again", Toast.LENGTH_SHORT).show()
+                toast.showToast(requireContext(), "Failed To Update, Please Try Again!", 1)
             }
     }
 }

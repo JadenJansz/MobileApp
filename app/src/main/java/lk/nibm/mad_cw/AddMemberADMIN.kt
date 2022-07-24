@@ -48,7 +48,7 @@ class AddMemberADMIN :  Fragment() {
 
         val adapter = ArrayAdapter.createFromResource(requireContext(), R.array.spinner, android.R.layout.simple_spinner_item)
 
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_item)
+        adapter.setDropDownViewResource(R.layout.spin_item)
         spinner.adapter = adapter
 
         mAuth = FirebaseAuth.getInstance()
@@ -114,11 +114,13 @@ class AddMemberADMIN :  Fragment() {
                         .setValue(user).addOnCompleteListener {task ->
 
                             if(task.isSuccessful){
-                                Toast.makeText(context, "Successfully Registered", Toast.LENGTH_SHORT).show()
+                                val toast = ToastClass()
+                                toast.showToast(requireContext(), "Successfully Registered", 0)
                                 progressBar.setVisibility(View.GONE)
                                 sendMail()
                             }else{
-                                Toast.makeText(context, "Try Again", Toast.LENGTH_SHORT).show()
+                                val toast = ToastClass()
+                                toast.showToast(requireContext(), "Try Again", 1)
                                 progressBar.setVisibility(View.GONE)
                             }
                         }
@@ -128,7 +130,8 @@ class AddMemberADMIN :  Fragment() {
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(ContentValues.TAG, "signInWithEmail:failure", task.exception)
-                    Toast.makeText(context, "This user already exists", Toast.LENGTH_SHORT).show()
+                    val toast = ToastClass()
+                    toast.showToast(requireContext(), "This User Already Exists", 1)
                     progressBar.setVisibility(View.GONE)
                 }
             }

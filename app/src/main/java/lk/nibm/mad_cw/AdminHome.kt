@@ -148,7 +148,8 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                     nav_email.setText(it.child("email").value.toString())
                 }
                 else{
-                    Toast.makeText(this, "Error Loading Data", Toast.LENGTH_SHORT).show()
+                    val toast = ToastClass()
+                    toast.showToast(this, "Error Loading  Data", 1)
                 }
             }
     }
