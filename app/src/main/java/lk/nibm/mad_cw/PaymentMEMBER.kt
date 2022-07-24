@@ -83,7 +83,7 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
             jsonObject.put("name", "D's GYM")
             jsonObject.put("description", "Montly Payment")
             jsonObject.put("theme.color","#000000")
-            jsonObject.put("currency", "USD")
+            jsonObject.put("currency", "LKR")
             jsonObject.put("amount", txtAmount.toString())
             jsonObject.put("prefill.contact", contact)
             jsonObject.put("prefill.email", email)

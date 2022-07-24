@@ -105,7 +105,7 @@ class AddMemberADMIN :  Fragment() {
 
 
         progressBar.setVisibility(View.VISIBLE)
-        mAuth.createUserWithEmailAndPassword(email, "1234567")
+        mAuth.createUserWithEmailAndPassword(email, random.toString())
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {
                     val user = User(FirebaseAuth.getInstance().currentUser!!.uid,"","","","",email,"","","", type, "")

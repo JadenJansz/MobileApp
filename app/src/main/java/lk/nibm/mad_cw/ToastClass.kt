@@ -30,7 +30,7 @@ class ToastClass : AppCompatActivity(){
         if(code == 0) {
             toastText.text = message
             toastImage.setImageResource(R.drawable.success_icon)
-            toastBackground.setBackgroundColor(Color.parseColor("#4BB543"))
+            toastBackground.setBackgroundResource(R.drawable.toast_back_green)
             val toast = Toast(context)
             toast.duration = Toast.LENGTH_LONG
             toast.setView(layout)
@@ -38,7 +38,7 @@ class ToastClass : AppCompatActivity(){
         }else if(code == 1) {
             toastText.text = message
             toastImage.setImageResource(R.drawable.error_icon)
-            toastBackground.setBackgroundColor(Color.parseColor("#ff0000"))
+            toastBackground.setBackgroundResource(R.drawable.toast_back_red)
             val toast = Toast(context)
             toast.duration = Toast.LENGTH_LONG
             toast.setView(layout)
@@ -46,7 +46,7 @@ class ToastClass : AppCompatActivity(){
         }else if(code == 2) {
             toastText.text = message
             toastImage.setImageResource(R.drawable.information_icon)
-            toastBackground.setBackgroundColor(Color.parseColor("#6F80EF"))
+            toastBackground.setBackgroundResource(R.drawable.toast_back_blue)
             val toast = Toast(context)
             toast.duration = Toast.LENGTH_LONG
             toast.setView(layout)

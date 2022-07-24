@@ -1,5 +1,6 @@
 package lk.nibm.mad_cw
 
+import android.app.ActivityManager
 import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -115,6 +116,10 @@ class ViewMemberADMIN : AppCompatActivity() {
         }
     }
 
+    override fun onBackPressed() {
+
+    }
+
     private fun changeButtonText(){
         val l = checkAccountStatus()
         if(l){
@@ -175,4 +180,6 @@ class ViewMemberADMIN : AppCompatActivity() {
         Log.e("Status", status.toString())
         return status
     }
+
+
 }

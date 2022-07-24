@@ -86,7 +86,7 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
             drawer.closeDrawer(GravityCompat.START)
         }
         else{
-            super.onBackPressed()
+            drawer.openDrawer(GravityCompat.START)
         }
 
     }

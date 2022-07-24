@@ -130,7 +130,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                                     val adminPage = Intent(this, AdminHome::class.java)
                                     startActivity(adminPage)
                                     progressBar.setVisibility(View.GONE)
-                                    //this.finish()
+                                    this.finish()
                                 }
                                 else if(dataSnapshot.child("role").getValue() == "MEMBER" && dataSnapshot.child("active").getValue() == "Y"){
                                     val memberHomePage = Intent(this, MemberHome::class.java)

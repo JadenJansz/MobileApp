@@ -59,9 +59,5 @@ class ViewMembersADMIN : Fragment() {
 
             }
         })
-
-
     }
-
-
 }

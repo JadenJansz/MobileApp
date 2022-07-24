@@ -25,6 +25,7 @@
         android:layout_width="250dp"
         android:layout_height="40dp"
         android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
         android:layout_toRightOf="@id/row_member_avatar"
         android:fontFamily="@font/samsungsans_medium"
         android:text="Title"
