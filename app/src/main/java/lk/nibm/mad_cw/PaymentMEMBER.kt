@@ -2,6 +2,7 @@ package lk.nibm.mad_cw
 
 import android.graphics.Color
 import android.os.Bundle
+import android.util.Log
 import android.view.Window
 import android.widget.Button
 import android.widget.EditText
@@ -68,23 +69,29 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
 
     override fun onPaymentError(p0: Int, p1: String?) {
         val toast = ToastClass()
-        toast.showToast(this, "Payment Was Not Successful", 1)
+
+        if(p1 == "Invalid amount (should be passed in integer cent. Minimum value is 358 cent, i.e. රු 3.58)"){
+            toast.showToast(this, "Minimum value should be 358", 1)
+        }else{
+            toast.showToast(this, "Payment Was Not Successful", 1)
+        }
+        Log.e("Payment Error", p1.toString())
     }
 
     private fun makePayment() {
         val checkOut = Checkout()
 
         checkOut.setKeyID("rzp_test_qPDDRARmQCv77P")
-        checkOut.setImage(R.drawable.profileicon)
+        checkOut.setImage(R.mipmap.logo)
 
         val jsonObject = JSONObject()
 
         try {
             jsonObject.put("name", "D's GYM")
             jsonObject.put("description", "Montly Payment")
-            jsonObject.put("theme.color","#000000")
+            jsonObject.put("theme.color","#5862EF")
             jsonObject.put("currency", "LKR")
-            jsonObject.put("amount", txtAmount.toString())
+            jsonObject.put("amount", txtAmount.text.toString().toDouble())
             jsonObject.put("prefill.contact", contact)
             jsonObject.put("prefill.email", email)
 
@@ -101,7 +108,8 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
                 if(it.exists()){
 
                     email = it.child("email").value.toString()
-                    contact = it.child("contact").value.toString()                }
+                    contact = it.child("contact").value.toString()
+                }
             }
     }
 

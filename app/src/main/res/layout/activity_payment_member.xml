@@ -67,7 +67,7 @@
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="300dp"
             android:layout_height="83dp"
-            android:hint="Rs."
+            android:hint="Rs.XXXX (1000.00 = 100000)"
             android:textColor="@color/black"
             android:textColorHint="#999999"
             app:boxStrokeColor="@color/purple_200"
