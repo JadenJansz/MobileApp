@@ -20,7 +20,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
-        android:layout_width="365dp"
+        android:layout_width="325dp"
         android:layout_height="680dp"
         android:background="@drawable/card_back"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -63,112 +63,112 @@
 
         <TextView
             android:id="@+id/txt_name_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:layout_marginTop="245dp"
+            android:background="@drawable/edittext_bg2"
             android:ems="10"
+            android:fontFamily="@font/samsungsans_regular"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <TextView
             android:id="@+id/txt_contact_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:layout_marginTop="425dp"
+            android:background="@drawable/edittext_bg2"
             android:ems="10"
+            android:fontFamily="@font/samsungsans_regular"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_emergency_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:layout_marginTop="485dp"
+            android:background="@drawable/edittext_bg2"
             android:ems="10"
+            android:fontFamily="@font/samsungsans_regular"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_nic_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:layout_marginTop="545dp"
+            android:background="@drawable/edittext_bg2"
             android:ems="10"
+            android:fontFamily="@font/samsungsans_regular"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_email_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:layout_marginTop="305dp"
+            android:background="@drawable/edittext_bg2"
             android:ems="10"
+            android:fontFamily="@font/samsungsans_regular"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="18dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/txt_dob_viewMemberADMIN"
-            android:layout_width="300dp"
-            android:layout_height="45dp"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
             android:layout_marginTop="365dp"
+            android:background="@drawable/edittext_bg2"
             android:ems="10"
+            android:fontFamily="@font/samsungsans_regular"
             android:inputType="textPersonName"
+            android:paddingLeft="10dp"
+            android:textAlignment="center"
+            android:textColor="@color/gray"
+            android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:paddingLeft="10dp"
-            android:background="@drawable/edittext_bg2"
-            android:textSize="24dp"
-            android:textColor="@color/gray"
-            android:fontFamily="@font/samsungsans_regular"
-            android:textAlignment="center"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/btn_viewMemberADMIN"
@@ -196,6 +196,19 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Full Name"
+            android:fontFamily="@font/samsungsans_medium"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.341" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

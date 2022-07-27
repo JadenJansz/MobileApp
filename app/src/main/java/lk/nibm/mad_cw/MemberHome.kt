@@ -185,5 +185,4 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
             }
     }
 
-
 }

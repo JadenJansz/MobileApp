@@ -56,7 +56,7 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/txt_dateLayout"
                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="100dp"
+                android:layout_width="105dp"
                 android:layout_height="85dp"
                 android:layout_marginLeft="15dp"
                 android:hint="D-M-Y"
@@ -181,12 +181,12 @@
 
             <Button
                 android:id="@+id/drop"
-                android:layout_width="330dp"
+                android:layout_width="310dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="96dp"
                 android:background="@drawable/button_bgred"
                 android:textColor="@color/white"
-                android:text="DROP EXERCISE"
+                android:text="DELETE EXERCISES"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.509"
                 app:layout_constraintStart_toStartOf="parent"

@@ -42,6 +42,15 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
         getSupportActionBar()?.hide()
         setContentView(R.layout.activity_admin_home)
 
+        val refresh = intent.getStringExtra("refresh")
+
+        if(refresh == "refresh"){
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ViewMembersADMIN()).commit()
+            findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+            findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+            findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
+        }
+
         val toolbar : androidx.appcompat.widget.Toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
 

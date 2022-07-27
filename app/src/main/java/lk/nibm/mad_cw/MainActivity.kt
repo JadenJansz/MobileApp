@@ -1,15 +1,19 @@
 package lk.nibm.mad_cw
 
+//import android.support.v7.app.AppCompatActivity
+
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
-//import android.support.v7.app.AppCompatActivity
+import android.net.ConnectivityManager
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.util.Patterns
 import android.view.View
 import android.view.Window
-import android.widget.*
+import android.widget.Button
+import android.widget.ProgressBar
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
@@ -18,6 +22,7 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -114,6 +119,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             return
         }
 
+        if (!isNetworkAvailable()) {
+            toast.showToast(this, "A Network Connection Is Required", 1)
+            return
+        }
+
         progressBar.setVisibility(View.VISIBLE)
         Log.d("Before", "Listener")
         mAuth.signInWithEmailAndPassword(email, password)
@@ -178,5 +188,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                     progressBar.setVisibility(View.GONE)
                 }
             }
+    }
+
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 }

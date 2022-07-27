@@ -41,7 +41,7 @@ class SeacrhExercises : Fragment() {
             WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN
         )
 
-        getExercises("leg squat")
+        getExercises("squat")
 
         noResults = view.findViewById(R.id.no_results)
 

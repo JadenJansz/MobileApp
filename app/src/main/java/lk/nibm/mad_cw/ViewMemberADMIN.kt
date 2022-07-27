@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.view.Window
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
@@ -27,6 +28,8 @@ class ViewMemberADMIN : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+        getSupportActionBar()?.hide()
         setContentView(R.layout.activity_view_member_admin)
 
         progressBar = findViewById(R.id.progressBar)
@@ -117,7 +120,9 @@ class ViewMemberADMIN : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-
+        val adminPage = Intent(this, AdminHome::class.java)
+        adminPage.putExtra("refresh", "refresh")
+        startActivity(adminPage)
     }
 
     private fun changeButtonText(){

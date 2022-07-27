@@ -179,9 +179,9 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
 
         if(exerciseList.size == 0){
             result = false
-            Toast.makeText(context, "Add At Least 1 Exercise", Toast.LENGTH_SHORT).show()
+            toast.showToast(requireContext(), "Add At Least 1 Exercise", 1)
         }else if(!result){
-            Toast.makeText(context, "Enter All Details", Toast.LENGTH_SHORT).show()
+            toast.showToast(requireContext(), "Enter All the Details", 1)
         }
 
         return result
@@ -253,6 +253,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
                     if(insertTrue){
                         toast.showToast(requireContext(), "New Entry Added", 0)
                         currentWeek += 1
+                        requireFragmentManager().beginTransaction().replace(R.id.fragment_container,  EnterFitnessStatusMEMBER()).commit()
                     }else{
                         toast.showToast(requireContext(), "This Week Is Already Entered", 1)
                         weekTextLayout.boxStrokeColor = Color.RED
@@ -264,7 +265,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
                 toast.showToast(requireContext(), "Week "+(currentWeek+1)+" is not recorded", 1)
             }
             else{
-                toast.showToast(requireContext(), "This Week Is Already Entered", 1)
+                toast.showToast(requireContext(), "", 1)
                 weekTextLayout.boxStrokeColor = Color.RED
                 weekTextLayout.error = ""
 

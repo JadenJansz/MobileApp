@@ -69,21 +69,24 @@ class GraphViewer : AppCompatActivity() {
             AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>, view: View, position: Int, id: Long) {
 
-                var lineDataSet = LineDataSet(lineChartDataSet(exerciseName[position]),"Exercises")
+                var lineDataSet = LineDataSet(lineChartDataSet(exerciseName[position]),"↑ Weight")
                 val iLineDataSets: ArrayList<ILineDataSet> = ArrayList()
                 iLineDataSets.add(lineDataSet);
                 val lineData: LineData = LineData(iLineDataSets)
                 lineChart.data = lineData
                 lineChart.invalidate()
+                lineChart.animateY(2000)
+                lineChart.setBackgroundResource(R.drawable.toast_back)
+                lineChart.description.text = "→ Week"
 
-                lineDataSet.color = Color.BLUE
-                lineDataSet.setCircleColor(Color.GREEN)
+                lineDataSet.color = Color.rgb(88, 98, 239)
+                lineDataSet.setCircleColor(Color.rgb(0, 0, 0))
                 lineDataSet.setDrawCircles(true)
                 lineDataSet.setDrawCircleHole(true)
                 lineDataSet.lineWidth = 3f
                 lineDataSet.circleRadius = 4f
                 lineDataSet.circleHoleRadius = 10f
-                lineDataSet.valueTextSize = 10f
+                lineDataSet.valueTextSize = 16f
                 lineDataSet.valueTextColor = Color.BLACK
 //                lineDataSet.enableDashedLine(10f, 5f, 3f)
             }

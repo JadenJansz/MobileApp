@@ -31,7 +31,6 @@ class ViewMembersADMIN : Fragment() {
         userArrayList = arrayListOf<UserArray>()
 
 
-
         reference = FirebaseDatabase.getInstance().getReference("Users")
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -52,6 +51,9 @@ class ViewMembersADMIN : Fragment() {
                         intent.putExtra("member", it)
                         startActivity(intent)
                     }
+
+
+
                 }
             }
 

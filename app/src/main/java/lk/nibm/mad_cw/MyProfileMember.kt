@@ -143,6 +143,7 @@ class MyProfileMember :  Fragment(), View.OnClickListener {
                 if (imageUriResultCrop != null) {
                     avatar.setImageURI(imageUriResultCrop)
                     uploadImageToFirebase(imageUriResultCrop)
+
                 }
             }
         }catch (e: Exception) {

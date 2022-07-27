@@ -319,10 +319,13 @@
         <ImageButton
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginTop="176dp"
             android:background="@drawable/create_icon"
-            tools:ignore="MissingConstraints"
-            tools:layout_editor_absoluteX="230dp"
-            tools:layout_editor_absoluteY="170dp"></ImageButton>
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.664"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="MissingConstraints"></ImageButton>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

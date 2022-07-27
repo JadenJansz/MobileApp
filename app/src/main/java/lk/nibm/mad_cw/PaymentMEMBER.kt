@@ -70,12 +70,13 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
     override fun onPaymentError(p0: Int, p1: String?) {
         val toast = ToastClass()
 
-        if(p1 == "Invalid amount (should be passed in integer cent. Minimum value is 358 cent, i.e. රු 3.58)"){
+
+        if(p0 == 3){
             toast.showToast(this, "Minimum value should be 358", 1)
         }else{
             toast.showToast(this, "Payment Was Not Successful", 1)
         }
-        Log.e("Payment Error", p1.toString())
+        Log.e("Payment Error", p0.toString())
     }
 
     private fun makePayment() {
@@ -88,7 +89,7 @@ class PaymentMEMBER : AppCompatActivity(), PaymentResultListener {
 
         try {
             jsonObject.put("name", "D's GYM")
-            jsonObject.put("description", "Montly Payment")
+            jsonObject.put("description", "Monthly Payment")
             jsonObject.put("theme.color","#5862EF")
             jsonObject.put("currency", "LKR")
             jsonObject.put("amount", txtAmount.text.toString().toDouble())
