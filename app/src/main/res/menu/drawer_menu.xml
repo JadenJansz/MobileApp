@@ -11,7 +11,10 @@
             android:title="View Members" />
         <item android:id="@+id/notice"
             android:icon="@drawable/create_icon"
-            android:title="Create Notice" />
+            android:title="Create A Notice" />
+        <item android:id="@+id/change_password"
+            android:icon="@drawable/chgpassword_icon"
+            android:title="Change Password" />
         <item android:id="@+id/logout"
             android:icon="@drawable/logout_icon"
             android:title="Logout" />

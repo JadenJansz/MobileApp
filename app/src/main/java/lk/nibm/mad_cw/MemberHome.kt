@@ -141,6 +141,13 @@ class MemberHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedL
                 findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
             }
 
+            R.id.chgPassword -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container,  ChangePassword()).commit()
+                findViewById<View?>(R.id.lbl_welcome002).visibility = View.GONE
+                findViewById<View?>(R.id.img_memhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome000).visibility = View.GONE
+            }
+
             R.id.logout -> {
                 logout()
             }

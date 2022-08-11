@@ -123,6 +123,13 @@ class AdminHome : AppCompatActivity(), NavigationView.OnNavigationItemSelectedLi
                 findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
             }
 
+            R.id.change_password -> {
+                supportFragmentManager.beginTransaction().replace(R.id.fragment_container, ChangePassword()).commit()
+                findViewById<View?>(R.id.img_adminhome).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_dsgym).visibility = View.GONE
+                findViewById<View?>(R.id.lbl_welcome).visibility = View.GONE
+            }
+
             R.id.logout -> {
                 var builder =  AlertDialog.Builder(this)
                 builder.setTitle("Log Out")

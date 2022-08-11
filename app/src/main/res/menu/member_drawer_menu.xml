@@ -28,6 +28,10 @@
             android:icon="@drawable/payment_icon"
             android:title="Make Payments" />
         <item
+            android:id="@+id/chgPassword"
+            android:icon="@drawable/chgpassword_icon"
+            android:title="Change Password" />
+        <item
             android:id="@+id/logout"
             android:icon="@drawable/logout_icon"
             android:title="Logout" />

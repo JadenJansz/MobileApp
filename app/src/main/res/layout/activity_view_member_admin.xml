@@ -15,8 +15,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
 
@@ -56,16 +55,17 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.14"
+            app:layout_constraintVertical_bias="0.12"
             android:src="@mipmap/profileicon"
             android:elevation="10dp"
             android:layout_gravity="center"/>
+
 
         <TextView
             android:id="@+id/txt_name_viewMemberADMIN"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginTop="245dp"
+            android:layout_marginTop="232dp"
             android:background="@drawable/edittext_bg2"
             android:ems="10"
             android:fontFamily="@font/samsungsans_regular"
@@ -75,16 +75,28 @@
             android:textColor="@color/gray"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_medium"
+            android:text="Full Name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.145"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.323" />
 
         <TextView
             android:id="@+id/txt_contact_viewMemberADMIN"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginTop="425dp"
+            android:layout_marginTop="432dp"
             android:background="@drawable/edittext_bg2"
             android:ems="10"
             android:fontFamily="@font/samsungsans_regular"
@@ -94,15 +106,28 @@
             android:textColor="@color/gray"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_medium"
+            android:text="Contact Number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.174"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.625" />
 
         <TextView
             android:id="@+id/txt_emergency_viewMemberADMIN"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginTop="485dp"
+            android:layout_marginTop="500dp"
             android:background="@drawable/edittext_bg2"
             android:ems="10"
             android:fontFamily="@font/samsungsans_regular"
@@ -112,15 +137,28 @@
             android:textColor="@color/gray"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_medium"
+            android:text="Emergency Contact Number"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.258"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.725" />
 
         <TextView
             android:id="@+id/txt_nic_viewMemberADMIN"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginTop="545dp"
+            android:layout_marginTop="560dp"
             android:background="@drawable/edittext_bg2"
             android:ems="10"
             android:fontFamily="@font/samsungsans_regular"
@@ -130,15 +168,28 @@
             android:textColor="@color/gray"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_medium"
+            android:text="NIC"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.126"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.821" />
 
         <TextView
             android:id="@+id/txt_email_viewMemberADMIN"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginTop="305dp"
+            android:layout_marginTop="296dp"
             android:background="@drawable/edittext_bg2"
             android:ems="10"
             android:fontFamily="@font/samsungsans_regular"
@@ -148,9 +199,35 @@
             android:textColor="@color/gray"
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_medium"
+            android:text="Email"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.144"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.422" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/samsungsans_medium"
+            android:text="Date Of Birth"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.158"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.523" />
 
         <TextView
             android:id="@+id/txt_dob_viewMemberADMIN"
@@ -174,7 +251,7 @@
             android:id="@+id/btn_viewMemberADMIN"
             android:layout_width="152dp"
             android:layout_height="55dp"
-            android:layout_marginTop="605dp"
+            android:layout_marginTop="610dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
@@ -196,19 +273,6 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Full Name"
-            android:fontFamily="@font/samsungsans_medium"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.145"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.341" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
