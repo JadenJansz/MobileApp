@@ -162,6 +162,9 @@ class ChangePassword : Fragment(), View.OnClickListener {
                 txtNewPassword.setText("")
                 txtConfirmPassword.setText("")
 
+                btnChange.isEnabled = false
+                btnChange.isClickable = false
+                btnChange.setBackgroundColor(Color.rgb(169,169,169))
 
             }else{
                 val toast = ToastClass()
