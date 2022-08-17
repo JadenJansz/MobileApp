@@ -265,7 +265,7 @@ class EnterFitnessStatusMEMBER : Fragment(), View.OnClickListener {
                 toast.showToast(requireContext(), "Week "+(currentWeek+1)+" is not recorded", 1)
             }
             else{
-                toast.showToast(requireContext(), "", 1)
+                toast.showToast(requireContext(), "This Week Is Already Entered", 1)
                 weekTextLayout.boxStrokeColor = Color.RED
                 weekTextLayout.error = ""
 
