@@ -24,7 +24,7 @@ class AddMemberADMIN :  Fragment() {
     private lateinit var spinner : Spinner
     private lateinit var progressBar : ProgressBar
     private lateinit var mAuth : FirebaseAuth
-    var random = (1000000..10000000).random()
+
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
@@ -58,7 +58,7 @@ class AddMemberADMIN :  Fragment() {
         }
     }
 
-    private fun sendMail() {
+    private fun sendMail(random : Int) {
         var email = memEmail.text.toString().trim()
         var subject = "Visit our app and activate your account "
         var message = "Hi,\n" +
@@ -102,7 +102,7 @@ class AddMemberADMIN :  Fragment() {
             return
         }
 
-
+        val random = (1000000..10000000).random()
 
         progressBar.setVisibility(View.VISIBLE)
         mAuth.createUserWithEmailAndPassword(email, random.toString())
@@ -117,7 +117,7 @@ class AddMemberADMIN :  Fragment() {
                                 val toast = ToastClass()
                                 toast.showToast(requireContext(), "Successfully Registered", 0)
                                 progressBar.setVisibility(View.GONE)
-                                sendMail()
+                                sendMail(random)
                             }else{
                                 val toast = ToastClass()
                                 toast.showToast(requireContext(), "Try Again", 1)
