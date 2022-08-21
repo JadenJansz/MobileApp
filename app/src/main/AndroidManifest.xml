@@ -38,9 +38,6 @@
             android:name=".GraphViewer"
             android:exported="true" />
         <activity
-            android:name=".MemberWelcome"
-            android:exported="false" />
-        <activity
             android:name=".ViewMemberADMIN"
             android:exported="false" />
         <activity
